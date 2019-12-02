@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { PruebaComponenteComponent } from './prueba-componente/prueba-componente.component';
 
 @NgModule({
-  declarations: [
-    
-  PruebaComponenteComponent],
+  declarations: [  
+    PruebaComponenteComponent
+  ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  bootstrap: []
+  bootstrap: [PruebaComponenteComponent]
 })
 export class AppModule { }
