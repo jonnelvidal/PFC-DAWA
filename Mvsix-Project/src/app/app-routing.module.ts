@@ -10,9 +10,8 @@ const routes: Routes = [
   declarations: [
     
   ],
-  imports: [
-    CommonModule
-  ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
   
 })
 export class AppRoutingModule { 

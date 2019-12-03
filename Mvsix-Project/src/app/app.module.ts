@@ -7,17 +7,18 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PruebaComponent } from './prueba/prueba.component';
 
 @NgModule({
-  declarations: [  
-    
-  PruebaComponent],
+  declarations: [      
+    PruebaComponent
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    
   ],
   providers: [],
-  bootstrap: []
+  bootstrap: [PruebaComponent]
 })
 export class AppModule { }
