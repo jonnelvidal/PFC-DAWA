@@ -24,6 +24,6 @@ class Conexion{
     
 }
 
-
+$conexion = new Conexion()
 
 ?>

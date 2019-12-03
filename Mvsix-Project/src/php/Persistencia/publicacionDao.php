@@ -1,4 +1,7 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
 require("../Entidades/conexion.php");
 require("../Entidades/publicacion.php");
@@ -91,38 +94,5 @@ class PublicacionDao{
     
 }
 
-//subirPublicacion funciona
-//eliminarPublicacion funciona
-//actualizarPublicacion funciona
-$bbdd = new Conexion();
-$db = $bbdd->getConexion();
-
-$pub = new Publicacion();
-$pub->setIdPublicacion(2);
-$dao = new PublicacionDao($db);
-$usuario = new Usuario();
-$usuario->setIdUsuario(1);
-$pub->setTitulo("Prueba publicacion");
-$pub->setDescripcion("Esto es una prueba de la función de actualizarPublicacion.");
-$pub->setValoracion(10);
-//$pub->setIdPublicacion(4);
-$num = $dao->procedureMama($pub);
-echo $num;
-if($num>0){
-
-    $produtos_arr=array();
-    $produtos_arr["records"]=array();
-    while ($item=$stmt->fetch_assoc()){
-        $item_produto=array(
-            
-            "nombre" => $item["nombre"],
-            
-        );
-        array_push($produtos_arr["records"],$item_produto);
-    }
-    http_response_code(200);
-
-    echo json_encode($produtos_arr,JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-}
 
 ?>

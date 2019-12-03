@@ -1,15 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { PruebaComponenteComponent } from './prueba-componente/prueba-componente.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from  '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { PruebaComponent } from './prueba/prueba.component';
 
 @NgModule({
   declarations: [  
-    PruebaComponenteComponent
-  ],
+    
+  PruebaComponent],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
-  bootstrap: [PruebaComponenteComponent]
+  bootstrap: []
 })
 export class AppModule { }
