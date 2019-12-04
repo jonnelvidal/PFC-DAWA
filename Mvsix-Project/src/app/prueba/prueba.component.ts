@@ -9,7 +9,7 @@ import { Usuario } from '../usuario';
 })
 export class PruebaComponent implements OnInit {
   usuarios: Usuario[];
- // usuarioSeleccionado: Usuario = {idUsuario: null, usuario: null, contrasena: null, nombre: null, apellido1:null}
+  usuarioSeleccionado: Usuario = {idUsuario: null, usuario: null, contrasena: null, email: null, nombre: null, apellido1:null, apellido2: null, fec_nac: null, pais: null, telefono: null, rol: null}
   
   constructor(private apiService: ApiService) { }
 

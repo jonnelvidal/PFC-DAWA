@@ -119,9 +119,8 @@ class UsuarioDao{
         return $stmt->get_result();
     }
     function mostrarUsuarios(){
-        $query = "SELECT * FROM usuario";
+        $query = "SELECT idUsuario, nombre, apellido1 FROM usuario";
         $stmt = $this->conexion->prepare($query);
-        $stmt->bind_param("i", $usuario->idUsuario);
         $stmt->execute();
         return $stmt->get_result();
     }

@@ -1,1 +1,15 @@
-<p>prueba works!</p>
+<div>
+
+    <table border='1' width='100%' style='border-collapse: collapse;'>
+      <tr>
+        <th>ID Usuario</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+      </tr>
+  
+      <tr *ngFor="let usuario of usuarios">
+        <td>{{ usuario.idUsuario }}</td>
+        <td>{{ usuario.nombre }}</td>
+        <td>{{ usuario.apellido1 }}</td>
+      </tr>
+    </table>

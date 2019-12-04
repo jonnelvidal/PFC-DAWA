@@ -12,25 +12,25 @@ $bbdd = $conexion->getConexion();
 $usuarioDao = new UsuarioDao($bbdd);
 
 $stmt = $usuarioDao->mostrarUsuarios();
-$num = $stmt->num_rows;
-echo $num;
-if($num>0){
+/* Se crea un array usuarios que se utilizará para obtener los datos en Angular */
+$usuarios = [];
 
-    $produtos_arr=array();
-    $produtos_arr["records"]=array();
-    while ($item=$stmt->fetch_assoc()){
-        $item_produto=array(
-            
-            "Nombre:" => $item["nombre"],
-            "Primer apellido:" => $item["apellido1"],
-            "Segundo apellido:" => $item["apellido2"],
-            
-        );
-        array_push($produtos_arr["records"],$item_produto);
-    }
-    http_response_code(200);
+if($stmt){
 
-    echo json_encode($produtos_arr,JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+  $i = 0;
+  while($row = mysqli_fetch_assoc($stmt)){
+    $usuarios[$i]['idUsuario']    = $row['idUsuario'];
+    $usuarios[$i]['nombre'] = $row['nombre'];
+    $usuarios[$i]['apellido1'] = $row['apellido1'];
+    $i++;
+
+  }
+
+  echo json_encode($usuarios);
+}else{
+
+  http_response_code(404);
+  
 }
 
 ?>
