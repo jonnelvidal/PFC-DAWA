@@ -1,5 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 require("../Entidades/conexion.php");
 require("../Entidades/usuario.php");
 
@@ -38,8 +40,12 @@ class UsuarioDao{
                           $usuario->fec_nac, 
                           $usuario->pais, 
                           $usuario->telefono);
-        $stmt->execute();
-        echo "Se ha registrado";
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+        
     }
     function comprobarUsuario(Usuario $usuario){
         $query = "SELECT * FROM usuario WHERE usuario = ?";
@@ -101,15 +107,22 @@ class UsuarioDao{
                           $usuario->telefono,
                           $usuario->idUsuario
         );
-        $stmt->execute();
-        echo "Se ha actualizado guay";
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
     }
     function eliminarUsuario(Usuario $usuario){
         $query = "CALL eliminarUsuario(?)";
         $stmt = $this->conexion->prepare($query);
         $stmt->bind_param("i", $usuario->idUsuario);
-        $stmt->execute();
-        echo "Se ha eliminado ese usuario";
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+        
     }
     function buscarUsuario(Usuario $usuario){
         $query = "CALL buscarUsuario(?)";
@@ -119,7 +132,7 @@ class UsuarioDao{
         return $stmt->get_result();
     }
     function mostrarUsuarios(){
-        $query = "SELECT idUsuario, nombre, apellido1 FROM usuario";
+        $query = "SELECT * FROM usuario";
         $stmt = $this->conexion->prepare($query);
         $stmt->execute();
         return $stmt->get_result();

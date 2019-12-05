@@ -19,9 +19,17 @@ if($stmt){
 
   $i = 0;
   while($row = mysqli_fetch_assoc($stmt)){
-    $usuarios[$i]['idUsuario']    = $row['idUsuario'];
+    $usuarios[$i]['idUsuario'] = $row['idUsuario'];
+    $usuarios[$i]['usuario'] = $row['usuario'];
+    $usuarios[$i]['contrasena'] = $row['contrasena'];
+    $usuarios[$i]['email'] = $row['email'];
     $usuarios[$i]['nombre'] = $row['nombre'];
     $usuarios[$i]['apellido1'] = $row['apellido1'];
+    $usuarios[$i]['apellido2'] = $row['apellido2'];
+    $usuarios[$i]['fec_nac'] = $row['fec_nac'];
+    $usuarios[$i]['pais'] = $row['pais'];
+    $usuarios[$i]['telefono'] = $row['telefono'];
+    $usuarios[$i]['rol'] = $row['rol'];
     $i++;
 
   }

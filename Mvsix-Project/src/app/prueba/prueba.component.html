@@ -11,5 +11,42 @@
         <td>{{ usuario.idUsuario }}</td>
         <td>{{ usuario.nombre }}</td>
         <td>{{ usuario.apellido1 }}</td>
+        <td>
+            <button (click)="deleteUsuario(usuario)">Delete</button>
+            <button (click)="seleccionarUsuario(usuario)">Update</button>
+        </td>
       </tr>
     </table>
+</div>
+
+<form #f = "ngForm">
+    <br>
+    <label>Usuario: </label>
+    <input type="text" name="usuario" [(ngModel)] = "usuarioSeleccionado.usuario">
+    <br>
+    <label>Contraseña: </label>
+    <input type="password" name="contrasena" [(ngModel)] = "usuarioSeleccionado.contrasena"> 
+    <br>
+    <label>Email: </label>
+    <input type="email" name="email" [(ngModel)] = "usuarioSeleccionado.email"> 
+    <br>
+    <label>Nombre: </label>
+    <input type="text" name="nombre" [(ngModel)] = "usuarioSeleccionado.nombre">
+    <br>
+    <label>Primer Apellido: </label>
+    <input type="text" name="apellido1" [(ngModel)] = "usuarioSeleccionado.apellido1">
+    <br>
+    <label>Segundo Apellido: </label>
+    <input type="text" name="apellido2" [(ngModel)] = "usuarioSeleccionado.apellido2">
+    <br>
+    <label>Fecha de nacimiento: </label>
+    <input type="date" name="fec_nac" [(ngModel)] = "usuarioSeleccionado.fec_nac">
+    <br>
+    <label>País: </label>
+    <input type="text" name="pais" [(ngModel)] = "usuarioSeleccionado.pais">
+    <br>
+    <label>Teléfono: </label>
+    <input type="number" name="telefono" [(ngModel)] = "usuarioSeleccionado.telefono">
+    <br>
+    <input type="button" (click)="createOrUpdateUsuario(f)" value="Create or Update Policy">
+  </form>
