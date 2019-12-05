@@ -18,13 +18,9 @@ export class ApiService {
     return this.httpClient.post<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/Creacion.php`, usuario);
   }
   updateUsuario(usuario: Usuario): Observable<Usuario>{
-    return this.httpClient.post<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/Creacion.php`, usuario);
-  }
-  deleteUsuario1(id: number){
-    return this.httpClient.delete<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/Eliminacion.php/id=${id}`);
-    
+    return this.httpClient.put<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/Actualizacion.php`, usuario);
   }
   deleteUsuario(usuario: Usuario): Observable<Usuario>{
-    return this.httpClient.post<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/Eliminacion.php/?idUsuario=${usuario.idUsuario}`, usuario);
+    return this.httpClient.delete<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/Eliminacion.php/?idUsuario=${usuario.idUsuario}`);
   }
 }

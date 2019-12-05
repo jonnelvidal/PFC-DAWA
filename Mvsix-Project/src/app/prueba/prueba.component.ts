@@ -15,6 +15,7 @@ export class PruebaComponent implements OnInit {
   createOrUpdateUsuario(form){
     if(this.usuarioSeleccionado && this.usuarioSeleccionado.idUsuario){
       form.value.idUsuario = this.usuarioSeleccionado.idUsuario;
+      console.log(form.value.idUsuario);
       this.apiService.updateUsuario(form.value).subscribe((usuario: Usuario)=>{
         console.log("Usuario actualizado" , usuario);
       });

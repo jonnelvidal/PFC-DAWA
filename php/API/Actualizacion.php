@@ -19,10 +19,10 @@ if(isset($postdata) && !empty($postdata))
 
 
   // Validate.
-  if(trim($request->usuario) === '' && $request->contrasena === '' && $request->email === '' && $request->nombre === '' && $request->apellido1 === '' && $request->apellido2 === '' && $request->fec_nac === '' && $request->pais === '' && $request->telefono === ''){
+  if((int)$request->idUsuario === '' && trim($request->usuario) === '' && $request->contrasena === '' && $request->email === '' && $request->nombre === '' && $request->apellido1 === '' && $request->apellido2 === '' && $request->fec_nac === '' && $request->pais === '' && $request->telefono === ''){
     return http_response_code(400);
   }else{
-    
+    $user->setIdUsuario((int)$request->idUsuario);
     $user->setUsuario($request->usuario);
     $user->setContrasena($request->contrasena);
     $user->setEmail($request->email);
@@ -32,13 +32,14 @@ if(isset($postdata) && !empty($postdata))
     $user->setFec_nac($request->fec_nac);
     $user->setPais($request->pais);
     $user->setTelefono($request->telefono);
-    $stmt = $usuarioDao->registrarUsuario($user);
+    $stmt = $usuarioDao->actualizarDatos($user);
   }
 
   if($stmt)
   {
     
     $usuario = [
+      'idUsuario' => $user->idUsuario,
       'usuario' => $user->usuario,
       'contrasena' => $user->contrasena,
       'email' => $user->email,
