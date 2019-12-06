@@ -8,6 +8,7 @@ import { Usuario } from '../usuario';
   styleUrls: ['./prueba.component.css']
 })
 export class PruebaComponent implements OnInit {
+  p: number = 1;
   usuarios: Usuario[];
   usuarioSeleccionado: Usuario = {idUsuario: null, usuario: null, contrasena: null, email: null, nombre: null, apellido1:null, apellido2: null, fec_nac: null, pais: null, telefono: null, rol: null}
   
@@ -18,15 +19,16 @@ export class PruebaComponent implements OnInit {
       console.log(form.value.idUsuario);
       this.apiService.updateUsuario(form.value).subscribe((usuario: Usuario)=>{
         console.log("Usuario actualizado" , usuario);
+        this.ngOnInit();
       });
     }
     else{
 
       this.apiService.createUsuario(form.value).subscribe((usuario: Usuario)=>{
         console.log("Usuario created, ", usuario);
+        this.ngOnInit();
       });
     }
-
   }
 
   seleccionarUsuario(usuario: Usuario){
@@ -37,7 +39,9 @@ export class PruebaComponent implements OnInit {
   deleteUsuario(usuario: Usuario){
     this.apiService.deleteUsuario(usuario).subscribe((usuario: Usuario)=>{
       console.log("Usuario deleted, ", usuario);
+      this.ngOnInit();
     });
+    
   }
   ngOnInit() {
     this.apiService.readUsuarios().subscribe((usuarios: Usuario[])=>{
