@@ -1,0 +1,10 @@
+<form #f = "ngForm">
+        <br>
+        <label>Usuario: </label>
+        <input type="text" name="usuario" [(ngModel)] = "usuarioSeleccionado.usuario">
+        <br>
+        <label>Contraseña: </label>
+        <input type="password" name="contrasena" [(ngModel)] = "usuarioSeleccionado.contrasena"> 
+        <br>
+        <input type="button" (click)="loginUsuario(f)" value="Create or Update Policy">
+</form>

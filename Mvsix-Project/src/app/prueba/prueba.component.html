@@ -1,4 +1,4 @@
-<div>
+<div *ngFor="let usuario of usuarios">
 
     <table border='1' width='100%' style='border-collapse: collapse;'>
       <tr>
@@ -7,7 +7,7 @@
         <th>Apellido</th>
       </tr>
   
-      <tr *ngFor="let usuario of usuarios">
+      <tr >
         <td>{{ usuario.idUsuario }}</td>
         <td>{{ usuario.nombre }}</td>
         <td>{{ usuario.apellido1 }}</td>

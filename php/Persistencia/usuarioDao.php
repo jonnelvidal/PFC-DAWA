@@ -69,10 +69,11 @@ class UsuarioDao{
         $query = "SELECT usuario, contrasena FROM usuario where usuario = ? and contrasena = ?";
         $stmt = $this->conexion->prepare($query);
         $stmt->bind_param("ss", $usuario->usuario, $usuario->contrasena);
-        $stmt->execute();
-        $res = $stmt->get_result();
-        $existeCuenta = $res->num_rows;
-        $existeCuenta;
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
     }
     function infoPerfil(Usuario $usuario){
         $query = "SELECT usuario, email, nombre, apellido1, apellido2, fec_nac, pais, telefono FROM usuario where usuario = ?";

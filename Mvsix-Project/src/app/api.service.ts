@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Usuario } from  './usuario';
+import { Usuario } from  '../entities/usuario';
 import { Observable } from  'rxjs';
 
 @Injectable({
@@ -22,5 +22,8 @@ export class ApiService {
   }
   deleteUsuario(usuario: Usuario): Observable<Usuario>{
     return this.httpClient.delete<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/Eliminacion.php/?idUsuario=${usuario.idUsuario}`);
+  }
+  loginUsuario(usuario: Usuario): Observable<Usuario[]>{
+    return this.httpClient.get<Usuario[]>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/LecturaLogin.php`);
   }
 }

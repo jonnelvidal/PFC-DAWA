@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { PruebaComponent } from './prueba/prueba.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 const routes: Routes = [
-  { path: 'prueba', component: PruebaComponent }
+  { path: 'prueba', component: PruebaComponent },
+  { path: 'usuario', component: UsuarioComponent }
+
 ];
 @NgModule({
   declarations: [
