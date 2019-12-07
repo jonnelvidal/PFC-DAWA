@@ -9,12 +9,13 @@ import { PruebaComponent } from './prueba/prueba.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { BodyCenterComponent } from './body-center/body-center.component';
 
 
 
 @NgModule({
   declarations: [      
-    PruebaComponent, HeaderComponent, FooterComponent, UsuarioComponent
+    PruebaComponent, HeaderComponent, FooterComponent, UsuarioComponent, BodyCenterComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +27,6 @@ import { UsuarioComponent } from './usuario/usuario.component';
     
   ],
   providers: [],
-  bootstrap: [PruebaComponent,HeaderComponent,FooterComponent]
+  bootstrap: [HeaderComponent,FooterComponent,BodyCenterComponent]
 })
 export class AppModule { }
