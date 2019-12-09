@@ -2,9 +2,28 @@
         <br>
         <label>Usuario: </label>
         <input type="text" name="usuario" [(ngModel)] = "usuarioSeleccionado.usuario">
-        <br>
-        <label>Contraseña: </label>
-        <input type="password" name="contrasena" [(ngModel)] = "usuarioSeleccionado.contrasena"> 
+    <br>
+    <label>Contraseña: </label>
+    <input type="password" name="contrasena" [(ngModel)] = "usuarioSeleccionado.contrasena"> 
         <br>
         <input type="button" (click)="loginUsuario(f)" value="Create or Update Policy">
 </form>
+<div>
+
+<table border='1' width='100%' style='border-collapse: collapse;' *ngIf="usuarioLogeado != null;">
+        <tr>
+        <th>ID Usuario</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        </tr>
+
+        <tr >
+        <td>{{ usuarioLogeado.idUsuario }}</td>
+        <td>{{ usuarioLogeado.nombre }}</td>
+        <td>{{ usuarioLogeado.apellido1 }}</td>
+        <td>
+        <button (click)="deleteUsuario(usuario)">Delete</button>
+        <button (click)="seleccionarUsuario(usuario)">Update</button>
+        </td>
+        </tr>
+</table>

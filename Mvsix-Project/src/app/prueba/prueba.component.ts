@@ -57,7 +57,7 @@ export class PruebaComponent implements OnInit {
   ngOnInit() {
     this.apiService.readUsuarios().subscribe((usuarios: Usuario[])=>{
       this.usuarios = usuarios;
-    })
+    });
     
 
   }

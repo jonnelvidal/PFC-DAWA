@@ -66,21 +66,24 @@ class UsuarioDao{
         return $emailEncontrados;
     }
     function comprobarCuenta(Usuario $usuario){
-        $query = "SELECT usuario, contrasena FROM usuario where usuario = ? and contrasena = ?";
+        $query = "SELECT * FROM usuario where usuario = ? and contrasena = ?";
         $stmt = $this->conexion->prepare($query);
         $stmt->bind_param("ss", $usuario->usuario, $usuario->contrasena);
-        if($stmt->execute()){
+        $stmt->execute();
+        $resRow = $stmt->get_result()->num_rows;
+        if($resRow == 1){
             return true;
         }else{
             return false;
         }
     }
     function infoPerfil(Usuario $usuario){
-        $query = "SELECT usuario, email, nombre, apellido1, apellido2, fec_nac, pais, telefono FROM usuario where usuario = ?";
+        $query = "SELECT idUsuario, usuario, email, nombre, apellido1, apellido2, fec_nac, pais, telefono FROM usuario where usuario = ?";
         $stmt = $this->conexion->prepare($query);
         $stmt->bind_param("s", $usuario->usuario);
         $stmt->execute();
         foreach($stmt->get_result() as $infoUsuario){
+            $usuario->setIdUsuario($infoUsuario['idUsuario']);
             $usuario->setUsuario($infoUsuario['usuario']);
             $usuario->setEmail($infoUsuario['email']);
             $usuario->setNombre($infoUsuario['nombre']);
@@ -90,8 +93,7 @@ class UsuarioDao{
             $usuario->setPais($infoUsuario['pais']);
             $usuario->setTelefono($infoUsuario['telefono']);
         }
-        
-        
+        return $usuario;        
     }
     function actualizarDatos(Usuario $usuario){
         $query = "CALL actualizarUsuario(?,?,?,?,?,?,?,?,?,?)";
