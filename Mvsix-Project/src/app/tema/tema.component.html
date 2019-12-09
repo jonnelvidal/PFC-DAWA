@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Temas</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Archivo Tema</th>
+          <th>nombre Artista</th>
+          <th>Valoración</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let tema of temas">
+        <tr>
+          <td>{{ tema.nombre }}</td>
+          <td>{{ tema.archivoTema }}</td>
+          <td>{{ tema.nombreArtista }}</td>
+          <td>{{ tema.valoracion }}</td>
+          <td>
+            <button (click)="deleteTema(tema)">Delete</button>
+            <button (click)="seleccionarTema(tema)">Update</button>
+         </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from  '../entities/usuario';
+import { Tema } from  '../entities/tema';
 import { Observable } from  'rxjs';
 
 @Injectable({
@@ -26,4 +27,8 @@ export class ApiService {
   loginUsuario(usuario: Usuario): Observable<Usuario>{
     return this.httpClient.post<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/LecturaLogin.php`, usuario);
   }
+  readTemas(): Observable<Tema[]>{
+    return this.httpClient.get<Tema[]>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/LecturaTema.php`);
+  }
+
 }

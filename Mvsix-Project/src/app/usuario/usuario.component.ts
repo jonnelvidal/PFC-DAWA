@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/entities/usuario';
 import { ApiService } from '../api.service';
+import { analyzeNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-usuario',
@@ -21,7 +22,8 @@ export class UsuarioComponent implements OnInit {
     });
     
   }
-
+  
+  
   ngOnInit() {
   }
 

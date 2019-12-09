@@ -80,9 +80,11 @@ class TemaDao{
         $stmt->execute();
     }
     function mostrarTemasUsuario(){
-        $query = "select tema.nombre, tema.archivoTema, tema.nombreArtista, tema.duracion, tema.valoracion, tema.imagen from tema 
-        inner join usuario_tema on tema.idTema = usuario_tema.idTema 
-        inner join usuario on usuario_tema.idUsuario = usuario.idUsuario where usuario.idUsuario = 1";
+        $query = "select tema.idTema, tema.nombre, tema.archivoTema, tema.nombreArtista, tema.duracion, tema.valoracion, tema.imagen from tema";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->execute();
+        return $stmt->get_result();
+
     }
     function temaSeleccionado(Tema $tema){
         $query = "SELECT nombre, archivoTema, nombreArtista, duracion, valoracion, imagen FROM tema WHERE idTema = ?";
@@ -111,21 +113,6 @@ class TemaDao{
 //temaSeleccionado funciona
 //eliminarTema funciona
 //actualizar tema funciona
-$bbdd = new Conexion();
-$conexion = $bbdd->getConexion();
-$tema = new Tema();
-$tema->setIdTema(3);
-$usuario = new Usuario();
-//$usuario->setIdUsuario(3);
 
-$tema->setNombre("Sarisso");
-$tema->setArchivoTema("sarisso.mp3");
-$tema->setNombreArtista("D. Marchetto x Sara");
-$tema->setDuracion(3);
-$tema->setValoracion(10);
-$tema->setImagen("SarissaSpear.jpg");
-
-$temaDao = new TemaDao($conexion);
-$temaDao->actualizarTema($tema);
 
 ?>

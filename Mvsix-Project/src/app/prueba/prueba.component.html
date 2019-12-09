@@ -1,52 +1,76 @@
-<div *ngFor="let usuario of usuarios">
-
-    <table border='1' width='100%' style='border-collapse: collapse;'>
+<div class="container">
+  <h2>Usuarios</h2>
+  <table class="table">
+    <thead>
       <tr>
-        <th>ID Usuario</th>
         <th>Nombre</th>
-        <th>Apellido</th>
+        <th>Primer apellido</th>
+        <th>Segundo apellido</th>
+        <th>email</th>
+        <th>Acciones</th>
       </tr>
-  
-      <tr >
-        <td>{{ usuario.idUsuario }}</td>
+    </thead>
+    <tbody *ngFor="let usuario of usuarios">
+      <tr>
         <td>{{ usuario.nombre }}</td>
         <td>{{ usuario.apellido1 }}</td>
+        <td>{{ usuario.apellido2 }}</td>
+        <td>{{ usuario.email }}</td>
         <td>
-            <button (click)="deleteUsuario(usuario)">Delete</button>
-            <button (click)="seleccionarUsuario(usuario)">Update</button>
-        </td>
+          <button (click)="deleteUsuario(usuario)">Delete</button>
+          <button (click)="seleccionarUsuario(usuario)">Update</button>
+      </td>
       </tr>
-    </table>
+    </tbody>
+  </table>
 </div>
-
 <form #f = "ngForm">
-    <br>
-    <label>Usuario: </label>
-    <input type="text" name="usuario" [(ngModel)] = "usuarioSeleccionado.usuario">
-    <br>
-    <label>Contraseña: </label>
-    <input type="password" name="contrasena" [(ngModel)] = "usuarioSeleccionado.contrasena"> 
-    <br>
-    <label>Email: </label>
-    <input type="email" name="email" [(ngModel)] = "usuarioSeleccionado.email"> 
-    <br>
-    <label>Nombre: </label>
-    <input type="text" name="nombre" [(ngModel)] = "usuarioSeleccionado.nombre">
-    <br>
-    <label>Primer Apellido: </label>
-    <input type="text" name="apellido1" [(ngModel)] = "usuarioSeleccionado.apellido1">
-    <br>
-    <label>Segundo Apellido: </label>
-    <input type="text" name="apellido2" [(ngModel)] = "usuarioSeleccionado.apellido2">
-    <br>
-    <label>Fecha de nacimiento: </label>
-    <input type="date" name="fec_nac" [(ngModel)] = "usuarioSeleccionado.fec_nac">
-    <br>
-    <label>País: </label>
-    <input type="text" name="pais" [(ngModel)] = "usuarioSeleccionado.pais">
-    <br>
-    <label>Teléfono: </label>
-    <input type="number" name="telefono" [(ngModel)] = "usuarioSeleccionado.telefono">
-    <br>
-    <input type="button" (click)="createOrUpdateUsuario(f)" value="Create or Update Policy">
-  </form>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Datos usuario</th>
+        <th>Introducir datos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Usuario</td>
+        <td><input type="text" name="usuario" [(ngModel)] = "usuarioSeleccionado.usuario"></td>
+      </tr>
+      <tr>
+        <td>Contraseña</td>
+        <td><input type="password" name="contrasena" [(ngModel)] = "usuarioSeleccionado.contrasena"></td>
+      </tr>
+      <tr>
+        <td>Correo electrónico</td>
+        <td><input type="email" name="email" [(ngModel)] = "usuarioSeleccionado.email"> </td>
+      </tr>
+      <tr>
+        <td>Nombre</td>
+        <td><input type="text" name="nombre" [(ngModel)] = "usuarioSeleccionado.nombre"></td>
+      </tr>
+      <tr>
+        <td>Primer Apellido</td>
+        <td><input type="text" name="apellido1" [(ngModel)] = "usuarioSeleccionado.apellido1"></td>
+      </tr>
+      <tr>
+        <td>Segundo Apellido</td>
+        <td><input type="text" name="apellido2" [(ngModel)] = "usuarioSeleccionado.apellido2"></td>
+      </tr>
+      <tr>
+        <td>Fecha de nacimiento</td>
+        <td><input type="date" name="fec_nac" [(ngModel)] = "usuarioSeleccionado.fec_nac"></td>
+      </tr>
+      <tr>
+        <td>País</td>
+        <td><input type="text" name="pais" [(ngModel)] = "usuarioSeleccionado.pais"></td>
+      </tr>
+      <tr>
+        <td>Teléfono</td>
+        <td><input type="number" name="telefono" [(ngModel)] = "usuarioSeleccionado.telefono"></td>
+      </tr>
+      <tr><td><input type="button" (click)="createOrUpdateUsuario(f)" value="Create or Update Policy" class="button"></td></tr>
+    </tbody>
+  </table>
+
+</form>
