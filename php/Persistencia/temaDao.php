@@ -37,7 +37,7 @@ class TemaDao{
         $stmt = $this->conexion->prepare($query);
         $stmt->execute(); 
     }
-    function subirTema(Tema $tema, Usuario $usuario){
+    /*function subirTema(Tema $tema, Usuario $usuario){
         $query = "INSERT INTO tema(nombre, archivoTema, nombreArtista, duracion, valoracion, imagen) VALUES (?,?,?,?,?,?)";
         
         $stmt = $this->conexion->prepare($query);
@@ -55,6 +55,24 @@ class TemaDao{
         $stmt->execute();
         $stmt2->execute();
         echo "Tema subido";
+    }*/
+    function subirTema(Tema $tema){
+        $query = "INSERT INTO tema(nombre, archivoTema, nombreArtista, duracion, valoracion, imagen) VALUES (?,?,?,?,?,?)";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bind_param("sssiis", 
+                        $tema->nombre,
+                        $tema->archivoTema,
+                        $tema->nombreArtista,
+                        $tema->duracion,
+                        $tema->valoracion,
+                        $tema->imagen
+        );
+        
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
     }
     function actualizarTema(Tema $tema){
         $query = "UPDATE tema SET nombre = ?, archivoTema = ?, nombreArtista = ?, duracion = ?, valoracion = ?, imagen = ? WHERE idTema = ?";
@@ -68,16 +86,22 @@ class TemaDao{
                         $tema->imagen,
                         $tema->idTema
         );
-        $stmt->execute();
-        echo "Tema actualizado";
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+        
     }
     function eliminarTema(Tema $tema){
-        $query = "DELETE tema, usuario_tema FROM tema 
-        INNER JOIN usuario_tema ON usuario_tema.idTema = tema.idTema 
-        WHERE usuario_tema.idTema = ?";
+        $query = "DELETE FROM tema WHERE idTema = ?";
         $stmt = $this->conexion->prepare($query);
         $stmt->bind_param("i", $tema->idTema);
-        $stmt->execute();
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
     }
     function mostrarTemasUsuario(){
         $query = "select tema.idTema, tema.nombre, tema.archivoTema, tema.nombreArtista, tema.duracion, tema.valoracion, tema.imagen from tema";

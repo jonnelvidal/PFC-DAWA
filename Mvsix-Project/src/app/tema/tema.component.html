@@ -23,4 +23,44 @@
         </tr>
       </tbody>
     </table>
-  </div>
+</div>
+<form #f = "ngForm">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Datos usuario</th>
+          <th>Introducir datos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nombre</td>
+          <td><input type="text" name="nombre" [(ngModel)] = "temaSeleccionado.nombre"></td>
+        </tr>
+        <tr>
+          <td>Archivo Tema</td>
+          <td><input type="text" name="archivoTema" [(ngModel)] = "temaSeleccionado.archivoTema"></td>
+        </tr>
+        <tr>
+          <td>Artista</td>
+          <td><input type="text" name="nombreArtista" [(ngModel)] = "temaSeleccionado.nombreArtista"></td>
+        </tr>
+        <tr>
+          <td>Duracion</td>
+          <td><input type="text" name="duracion" [(ngModel)] = "temaSeleccionado.duracion"></td>
+        </tr>
+        <tr>
+          <td>Valoracion</td>
+          <td><input type="text" name="valoracion" [(ngModel)] = "temaSeleccionado.valoracion"></td>
+        </tr>
+        <tr>
+          <td>Imagen</td>
+          <td><input type="text" name="imagen" [(ngModel)] = "temaSeleccionado.imagen"></td>
+        </tr>
+        
+        <tr><td><input type="button" (click)="createOrUpdateTema(f)" value="Create or Update Policy" class="button"></td></tr>
+      </tbody>
+    </table>
+  
+  </form>
+  
