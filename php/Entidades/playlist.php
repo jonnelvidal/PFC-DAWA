@@ -5,13 +5,13 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 class Playlist{
     
     public $idPlaylist;
+    public $idUsuario;
     public $nombrePlaylist;
-    public $numTemas;
     
-    public function getidPlaylist(){
+    public function getIdPlaylist(){
         return $this->idPlaylist;
     }
-    public function setidPlaylist($idPlaylist){
+    public function setIdPlaylist($idPlaylist){
         $this->idPlaylist = $idPlaylist;
     }
     public function getNombrePlaylist(){
@@ -20,16 +20,16 @@ class Playlist{
     public function setNombrePlaylist($nombrePlaylist){
         $this->nombrePlaylist = $nombrePlaylist;
     }
-    public function getNumTemas(){
-        return $this->numTemas;
+    public function getIdUSuario(){
+        return $this->idUsuario;
     }
-    public function setNumTemas($numTemas){
-        $this->numTemas = $numTemas;
+    public function setIdPlaylist($idUsuario){
+        $this->idUsuario = $idUsuario;
     }
-    
     public function __construct(){
         
     }
+    
     
     
 }

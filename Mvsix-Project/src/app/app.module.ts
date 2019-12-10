@@ -11,12 +11,13 @@ import { FooterComponent } from './footer/footer.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { BodyCenterComponent } from './body-center/body-center.component';
 import { TemaComponent } from './tema/tema.component';
+import { PlaylistComponent } from './playlist/playlist.component';
 
 
 
 @NgModule({
   declarations: [      
-    PruebaComponent, HeaderComponent, FooterComponent, UsuarioComponent, BodyCenterComponent, TemaComponent
+    PruebaComponent, HeaderComponent, FooterComponent, UsuarioComponent, BodyCenterComponent, TemaComponent, PlaylistComponent
   ],
   imports: [
     BrowserModule,
