@@ -1,1 +1,26 @@
-<p>playlist works!</p>
+<div class="container">
+    <h2>Temas</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Archivo Tema</th>
+          <th>nombre Artista</th>
+          <th>Valoración</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let playlist of playlist">
+        <tr>
+          <td>{{ playlist.idPlaylist }}</td>
+          <td>{{ playlist.idUsuario }}</td>
+          <td>{{ playlist.nombrePlaylist }}</td>
+          <td>{{ playlist.imagen }}</td>
+          <td>
+            <button (click)="deleteTema(tema)">Delete</button>
+            <button (click)="seleccionarTema(tema)">Update</button>
+         </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

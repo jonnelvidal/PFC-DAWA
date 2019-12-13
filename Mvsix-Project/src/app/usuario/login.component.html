@@ -1,16 +1,20 @@
-<form #f = "ngForm">
-        <br>
-        <label>Usuario: </label>
-        <input type="text" name="usuario" [(ngModel)] = "usuarioSeleccionado.usuario">
-    <br>
-    <label>Contraseña: </label>
-    <input type="password" name="contrasena" [(ngModel)] = "usuarioSeleccionado.contrasena"> 
-        <br>
-        <input type="button" (click)="loginUsuario(f)" value="Create or Update Policy" >
-</form>
-<div>
+<form #f="ngForm">
 
-<table border='1' width='100%' style='border-collapse: collapse;' *ngIf="algo">
+        <label>Usuario: </label>
+        <mat-form-field>
+                <input matInput placeholder="Nombre" name="usuario" [(ngModel)]="usuarioSeleccionado.usuario">
+        </mat-form-field>
+
+        <label>Contraseña: </label>
+        <mat-form-field>
+                <input matInput placeholder="Nombre" name="contrasena" [(ngModel)]="usuarioSeleccionado.contrasena">
+        </mat-form-field>
+        <br>
+        <button mat-button (click)="loginUsuario(f)">Create or Update Policy</button>
+</form>
+<button mat-raised-button (click)="openDialog()">Pick one</button>
+
+<table border='1' width='100%' style='border-collapse: collapse;'>
         <tr>
                 <th>ID Usuario</th>
                 <th>Nombre</th>

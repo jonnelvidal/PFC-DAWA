@@ -35,9 +35,7 @@ if(isset($postdata) && !empty($postdata))
     $stmt = $usuarioDao->registrarUsuario($user);
   }
 
-  if($stmt)
-  {
-    
+  if($stmt){
     $usuario = [
       'usuario' => $user->usuario,
       'contrasena' => $user->contrasena,
@@ -50,9 +48,7 @@ if(isset($postdata) && !empty($postdata))
       'telefono' => $user->telefono
     ];
     echo json_encode($usuario);
-  }
-  else
-  {
+  }else{
     http_response_code(422);
   }
 }

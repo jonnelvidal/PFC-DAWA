@@ -12,7 +12,7 @@ $bbdd = $conexion->getConexion();
 $temaDao = new TemaDao($bbdd);
 
 $stmt = $temaDao->mostrarTemasUsuario();
-/* Se crea un array usuarios que se utilizará para obtener los datos en Angular */
+
 $temas = [];
 
 if($stmt){

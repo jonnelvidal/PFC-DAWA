@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Usuario } from  '../entities/usuario';
 import { Tema } from  '../entities/tema';
 import { Observable } from  'rxjs';
+import { Playlist } from 'src/entities/playlist';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,14 @@ export class ApiService {
   }
   updateTema(tema: Tema): Observable<Tema>{
     return this.httpClient.put<Tema>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/ActualizacionTema.php`, tema);
+  }
+  createPlaylist(playlist: Playlist): Observable<Playlist>{
+    return this.httpClient.post<Playlist>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/CreacionTema.php`, playlist);
+  }
+  updatePlaylist(playlist: Playlist): Observable<Playlist>{
+    return this.httpClient.post<Playlist>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/CreacionTema.php`, playlist);
+  }
+  readPlaylists(): Observable<Playlist[]>{
+    return this.httpClient.get<Playlist[]>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/LecturaPlaylist.php`);
   }
 }
