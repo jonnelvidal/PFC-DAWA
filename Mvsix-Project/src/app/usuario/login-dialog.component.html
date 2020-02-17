@@ -1,13 +1,18 @@
-<h1 mat-dialog-title>Iniciar sesión</h1>
 <div mat-dialog-content>
-  <p>Usuario</p>
-  <mat-form-field>
-    <input matInput>
-  </mat-form-field>
-  <p>Contraseña</p>
-  <mat-form-field>
-    <input matInput>
-  </mat-form-field>
+  <h1 mat-dialog-title>Iniciar sesión</h1>
+  <div class="formulario">
+    <p>Usuario</p>
+    <mat-form-field>
+      <input matInput placeholder="Usuario">
+    </mat-form-field>
+    <p>Contraseña</p>
+    <mat-form-field>
+      <input matInput placeholder="Contraseña">
+    </mat-form-field>
+  </div>
+  <!--<img class="imagenbruh" src="assets/img/giflogo.gif">-->
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="qwe()">Iniciar Sesión</button>
+    <button mat-raised-button (click)="qwe()">Regístrate</button>
+  </div>
 </div>
-<div mat-dialog-actions>
-</div>  

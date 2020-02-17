@@ -1,0 +1,24 @@
+.mat-dialog-title{
+    grid-area: header;
+    text-align: center;
+}
+.formulario{
+    grid-area: body;
+}
+.mat-dialog-actions{
+    grid-area: footer;
+}
+
+::ng-deep .mat-dialog-content{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    display: grid;
+    background-size: 100%;
+    background-repeat: no-repeat; 
+    grid-template-columns: 25% 50% 25%;
+    grid-template-rows: 33% 34% 33%;
+    grid-template-areas: ". header ."
+                         "body body body"
+                         "footer footer footer";
+}

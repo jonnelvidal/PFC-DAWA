@@ -24,8 +24,9 @@ export class UsuarioComponent implements OnInit {
   
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-     
+      width: '50%',
+      height: '75%',
+      panelClass: 'my-dialog'
     });
 
     dialogRef.afterClosed().subscribe(result => {

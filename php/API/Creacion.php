@@ -32,6 +32,11 @@ if(isset($postdata) && !empty($postdata))
     $user->setFec_nac($request->fec_nac);
     $user->setPais($request->pais);
     $user->setTelefono($request->telefono);
+    $existeUsuario = $usuarioDao->comprobarUsuario($user);
+    $existeEmail = $usuarioDao->comprobarEmail($user);
+    if($existeUsuario > 0 or $existeEmail > 0){
+      return http_response_code(409); //Respuesta de conflicto. Usuario ya existe
+    }
     $stmt = $usuarioDao->registrarUsuario($user);
   }
 

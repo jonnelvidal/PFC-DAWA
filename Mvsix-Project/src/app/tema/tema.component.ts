@@ -7,6 +7,7 @@ import { ApiService } from '../api.service';
   styleUrls: ['./tema.component.css']
 })
 export class TemaComponent implements OnInit {
+  p: number = 1;
   temas: Tema[];
   temaSeleccionado: Tema ={idTema: null, nombre: null, archivoTema: null, duracion: null, imagen: null, nombreArtista: null, valoracion: null}
   constructor(private apiService: ApiService) { }

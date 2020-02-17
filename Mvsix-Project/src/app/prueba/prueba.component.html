@@ -10,7 +10,7 @@
         <th>Acciones</th>
       </tr>
     </thead>
-    <tbody *ngFor="let usuario of usuarios">
+    <tbody *ngFor="let usuario of usuarios | paginate: { itemsPerPage: 10, currentPage: p }">
       <tr>
         <td>{{ usuario.nombre }}</td>
         <td>{{ usuario.apellido1 }}</td>
@@ -23,6 +23,7 @@
       </tr>
     </tbody>
   </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 <form #f = "ngForm">
   <table class="table">

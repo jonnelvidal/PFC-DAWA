@@ -10,7 +10,7 @@
           <th>Acciones</th>
         </tr>
       </thead>
-      <tbody *ngFor="let tema of temas">
+      <tbody *ngFor="let tema of temas | paginate: { itemsPerPage: 2, currentPage: p }">
         <tr>
           <td>{{ tema.nombre }}</td>
           <td>{{ tema.archivoTema }}</td>
@@ -23,6 +23,7 @@
         </tr>
       </tbody>
     </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 <form #f = "ngForm">
     <table class="table">
