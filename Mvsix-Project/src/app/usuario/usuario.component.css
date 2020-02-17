@@ -14,6 +14,7 @@
     width: 100%;
     padding: 0;
     display: grid;
+    background-image: url('../../assets/img/giflogo.gif');
     background-size: 100%;
     background-repeat: no-repeat; 
     grid-template-columns: 25% 50% 25%;
