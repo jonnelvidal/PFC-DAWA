@@ -30,6 +30,7 @@ if($stmt){
     $usuarios[$i]['pais'] = $row['pais'];
     $usuarios[$i]['telefono'] = $row['telefono'];
     $usuarios[$i]['rol'] = $row['rol'];
+    $usuarios[$i]['fotoUsuario'] = $row['fotoUsuario'];
     $i++;
 
   }

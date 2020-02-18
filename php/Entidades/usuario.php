@@ -15,6 +15,7 @@ class Usuario{
     public $fec_nac;
     public $pais;
     public $rol;
+    public $fotoUsuario;
     
     public function __construct(){
     
@@ -87,6 +88,12 @@ class Usuario{
     }
     public function setRol($rol){
         $this->rol = $rol;
+    }
+    public function getFotoUsuario(){
+        return $this->fotoUsuario = $fotoUsuari
+    }
+    public function setFotoUsuario($fotoUsuario){
+        $this->fotoUsuario = $fotoUsuario;
     }
 }
 ?>

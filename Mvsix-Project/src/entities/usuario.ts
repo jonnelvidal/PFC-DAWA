@@ -11,5 +11,6 @@ export class Usuario {
     pais: string;
     telefono: number;
     rol: number;
+    fotoUsuario: string;
 
 }

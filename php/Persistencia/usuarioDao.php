@@ -20,7 +20,8 @@ class UsuarioDao{
                     fec_nac DATE,
                     pais VARCHAR(100),
                     telefono INT(11),
-                    rol TINYINT DEFAULT 0
+                    rol TINYINT DEFAULT 0,
+                    fotoUsuario VARCHAR(255)
         )";
         $stmt = $this->conexion->prepare($query);
         $stmt->execute();    
@@ -28,9 +29,9 @@ class UsuarioDao{
     }
     function registrarUsuario(Usuario $usuario){
  
-        $query = "INSERT INTO usuario(usuario, contrasena, email, nombre, apellido1, apellido2, fec_nac, pais, telefono) VALUES (?,?,?,?,?,?,?,?,?)";
+        $query = "INSERT INTO usuario(usuario, contrasena, email, nombre, apellido1, apellido2, fec_nac, pais, telefono, fotoUsuario) VALUES (?,?,?,?,?,?,?,?,?,?)";
         $stmt = $this->conexion->prepare($query);
-        $stmt->bind_param("ssssssssi", 
+        $stmt->bind_param("ssssssssis", 
                           $usuario->usuario,
                           $usuario->contrasena, 
                           $usuario->email, 
@@ -39,7 +40,8 @@ class UsuarioDao{
                           $usuario->apellido2, 
                           $usuario->fec_nac, 
                           $usuario->pais, 
-                          $usuario->telefono);
+                          $usuario->telefono,
+                          $usuario->fotoUsuario);
         if($stmt->execute()){
             return true;
         }else{
@@ -78,7 +80,7 @@ class UsuarioDao{
         }
     }
     function infoPerfil(Usuario $usuario){
-        $query = "SELECT idUsuario, usuario, email, nombre, apellido1, apellido2, fec_nac, pais, telefono FROM usuario where usuario = ?";
+        $query = "SELECT idUsuario, usuario, email, nombre, apellido1, apellido2, fec_nac, pais, telefono, fotoUsuario FROM usuario where usuario = ?";
         $stmt = $this->conexion->prepare($query);
         $stmt->bind_param("s", $usuario->usuario);
         $stmt->execute();
@@ -92,6 +94,8 @@ class UsuarioDao{
             $usuario->setFec_nac($infoUsuario['fec_nac']);
             $usuario->setPais($infoUsuario['pais']);
             $usuario->setTelefono($infoUsuario['telefono']);
+            $usuario->setFotoUsuario($infoUsuario['fotoUsuario']);
+
         }
         return $usuario;        
     }
