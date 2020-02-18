@@ -11,7 +11,7 @@ import { Usuario } from '../../entities/usuario';
 export class PruebaComponent implements OnInit {
   p: number = 1;
   usuarios: Usuario[];
-  usuarioSeleccionado: Usuario = {idUsuario: null, usuario: null, contrasena: null, email: null, nombre: null, apellido1:null, apellido2: null, fec_nac: null, pais: null, telefono: null, rol: null}
+  usuarioSeleccionado: Usuario = {idUsuario: null, usuario: null, contrasena: null, email: null, nombre: null, apellido1:null, apellido2: null, fec_nac: null, pais: null, telefono: null, rol: null, fotoUsuario: null}
   
   constructor(private apiService: ApiService) { 
     /* Prueba paginación

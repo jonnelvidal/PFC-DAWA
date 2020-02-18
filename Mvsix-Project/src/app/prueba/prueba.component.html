@@ -1,13 +1,13 @@
 <div class="container">
   <mat-card *ngFor="let usuario of usuarios | paginate: { itemsPerPage: 5, currentPage: p }">
-    <img mat-card-image src="assets/img/{{usuario.pais}}">
+    <img mat-card-image src="assets/img/{{usuario.fotoUsuario}}">
     <mat-card-title>{{ usuario.nombre }}</mat-card-title>
     <mat-card-subtitle>{{ usuario.apellido1 }}</mat-card-subtitle>
     <mat-card-subtitle>{{ usuario.apellido2 }}</mat-card-subtitle>
     <mat-card-subtitle>{{ usuario.email }}</mat-card-subtitle>
     <mat-card-subtitle>{{ usuario.pais }}</mat-card-subtitle>
-    <button (click)="deleteUsuario(usuario)">Delete</button>
-    <button (click)="seleccionarUsuario(usuario)">Update</button>
+    <button mat-button (click)="deleteUsuario(usuario)">Delete</button>
+    <button mat-button (click)="seleccionarUsuario(usuario)">Update</button>
   </mat-card>
   <!--<h2>Usuarios</h2>
   <table class="table">

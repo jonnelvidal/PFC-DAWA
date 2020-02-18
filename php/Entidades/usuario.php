@@ -90,7 +90,7 @@ class Usuario{
         $this->rol = $rol;
     }
     public function getFotoUsuario(){
-        return $this->fotoUsuario = $fotoUsuari
+        return $this->fotoUsuario = $fotoUsuario;
     }
     public function setFotoUsuario($fotoUsuario){
         $this->fotoUsuario = $fotoUsuario;

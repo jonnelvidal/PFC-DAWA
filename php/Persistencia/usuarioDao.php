@@ -80,7 +80,7 @@ class UsuarioDao{
         }
     }
     function infoPerfil(Usuario $usuario){
-        $query = "SELECT idUsuario, usuario, email, nombre, apellido1, apellido2, fec_nac, pais, telefono, fotoUsuario FROM usuario where usuario = ?";
+        $query = "SELECT idUsuario, usuario, email, nombre, apellido1, apellido2, fec_nac, pais, telefono, fotoUsuario   FROM usuario where usuario = ?";
         $stmt = $this->conexion->prepare($query);
         $stmt->bind_param("s", $usuario->usuario);
         $stmt->execute();
@@ -100,9 +100,9 @@ class UsuarioDao{
         return $usuario;        
     }
     function actualizarDatos(Usuario $usuario){
-        $query = "CALL actualizarUsuario(?,?,?,?,?,?,?,?,?,?)";
+        $query = "CALL actualizarUsuario(?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $this->conexion->prepare($query);
-        $stmt->bind_param("ssssssssii", 
+        $stmt->bind_param("ssssssssiis", 
                           $usuario->usuario,
                           $usuario->contrasena, 
                           $usuario->email, 
@@ -112,7 +112,8 @@ class UsuarioDao{
                           $usuario->fec_nac, 
                           $usuario->pais, 
                           $usuario->telefono,
-                          $usuario->idUsuario
+                          $usuario->idUsuario,
+                          $usuario->fotoUsuario
         );
         if($stmt->execute()){
             return true;
