@@ -19,53 +19,25 @@ class TemaDao{
                     nombreArtista VARCHAR(50) NOT NULL,
                     duracion DOUBLE(3,2) NOT NULL,
                     valoracion INT(11),
-                    imagen VARCHAR(255)
+                    imagen VARCHAR(255),
+                    idUsuario INT NOT NULL FOREIGN KEY(idUsuario) 
+                    REFERENCES usuario(idUsuario) ON DELETE CASCADE
         )";
         $stmt = $this->conexion->prepare($query);
         $stmt->execute();
         
     }
-    function crearTablaRelacionalTema(){
-        $query = "CREATE TABLE IF NOT EXISTS usuario_tema(
-                    idUsuario int(11) NOT NULL,
-                    idTema int(11) NOT NULL AUTO_INCREMENT,
-                    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario) 
-                    ON DELETE CASCADE,
-                    FOREIGN KEY (idTema) REFERENCES tema(idTema) 
-                    ON DELETE CASCADE
-        )";
+    function subirTema(Tema $tema, Usuario $usuario){
+        $query = "INSERT INTO tema(nombre, archivoTema, nombreArtista, duracion, valoracion, imagen, idUsuario) VALUES (?,?,?,?,?,?,?)";
         $stmt = $this->conexion->prepare($query);
-        $stmt->execute(); 
-    }
-    /*function subirTema(Tema $tema, Usuario $usuario){
-        $query = "INSERT INTO tema(nombre, archivoTema, nombreArtista, duracion, valoracion, imagen) VALUES (?,?,?,?,?,?)";
-        
-        $stmt = $this->conexion->prepare($query);
-        $stmt->bind_param("sssiis", 
+        $stmt->bind_param("sssiisi", 
                         $tema->nombre,
                         $tema->archivoTema,
                         $tema->nombreArtista,
                         $tema->duracion,
                         $tema->valoracion,
-                        $tema->imagen
-        );
-        $query2 = "INSERT INTO usuario_tema(idUsuario) VALUES (?)";
-        $stmt2 = $this->conexion->prepare($query2);
-        $stmt2->bind_param("i", $usuario->idUsuario);
-        $stmt->execute();
-        $stmt2->execute();
-        echo "Tema subido";
-    }*/
-    function subirTema(Tema $tema){
-        $query = "INSERT INTO tema(nombre, archivoTema, nombreArtista, duracion, valoracion, imagen) VALUES (?,?,?,?,?,?)";
-        $stmt = $this->conexion->prepare($query);
-        $stmt->bind_param("sssiis", 
-                        $tema->nombre,
-                        $tema->archivoTema,
-                        $tema->nombreArtista,
-                        $tema->duracion,
-                        $tema->valoracion,
-                        $tema->imagen
+                        $tema->imagen,
+                        $usuario->idUsuario
         );
         
         if($stmt->execute()){
@@ -93,19 +65,20 @@ class TemaDao{
         }
         
     }
-    function eliminarTema(Tema $tema){
-        $query = "DELETE FROM tema WHERE idTema = ?";
+    function eliminarTema(Tema $tema, Usuario $usuario){
+        $query = "DELETE FROM tema WHERE idTema = ? and idUsuario = ?";
         $stmt = $this->conexion->prepare($query);
-        $stmt->bind_param("i", $tema->idTema);
+        $stmt->bind_param("ii", $tema->idTema, $usuario->idUsuario);
         if($stmt->execute()){
             return true;
         }else{
             return false;
         }
     }
-    function mostrarTemasUsuario(){
-        $query = "select tema.idTema, tema.nombre, tema.archivoTema, tema.nombreArtista, tema.duracion, tema.valoracion, tema.imagen from tema";
+    function mostrarTemasUsuario(Usuario $usuario){
+        $query = "SELECT * FROM tema WHERE idUsuario = ?";
         $stmt = $this->conexion->prepare($query);
+        $stmt->bind_param("i", $usuario->idUsuario);
         $stmt->execute();
         return $stmt->get_result();
 
