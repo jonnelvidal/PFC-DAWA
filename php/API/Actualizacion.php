@@ -19,7 +19,7 @@ if(isset($postdata) && !empty($postdata))
 
 
   // Validate.
-  if((int)$request->idUsuario === '' && trim($request->usuario) === '' && $request->contrasena === '' && $request->email === '' && $request->nombre === '' && $request->apellido1 === '' && $request->apellido2 === '' && $request->fec_nac === '' && $request->pais === '' && $request->telefono === ''){
+  if((int)$request->idUsuario === '' && trim($request->usuario) === '' && $request->contrasena === '' && $request->email === '' && $request->nombre === '' && $request->apellido1 === '' && $request->apellido2 === '' && $request->fec_nac === '' && $request->pais === '' && $request->telefono === '' && $request->fotoUsuario === ''){
     return http_response_code(400);
   }else{
     $user->setIdUsuario((int)$request->idUsuario);
@@ -32,6 +32,7 @@ if(isset($postdata) && !empty($postdata))
     $user->setFec_nac($request->fec_nac);
     $user->setPais($request->pais);
     $user->setTelefono($request->telefono);
+    $user->setFotoUsuario($request->fotoUsuario);
     $stmt = $usuarioDao->actualizarDatos($user);
   }
 
@@ -49,6 +50,7 @@ if(isset($postdata) && !empty($postdata))
       'fec_nac' => $user->fec_nac,
       'pais' => $user->pais,
       'telefono' => $user->telefono
+      'fotoUsuario' => $user->fotoUsuario
     ];
     echo json_encode($usuario);
   }

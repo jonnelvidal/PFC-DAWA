@@ -6,3 +6,16 @@ ul{
 li{
     margin:2.5%;
 }
+#lxgx{
+    height: 150px;
+    width: 200px;
+}
+
+a{
+    font-family: Flavors-Regular;
+}
+.navbar{
+    width: 100vw;
+    height: 15rem;
+    
+}

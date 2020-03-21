@@ -2,10 +2,12 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Usuario } from 'src/entities/usuario';
 import { ApiService } from '../api.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {ViewEncapsulation} from '@angular/core';
 @Component({
   selector: 'app-usuario',
   templateUrl: './login.component.html',
-  styleUrls: ['./usuario.component.css']
+  styleUrls: ['./usuario.component.css'],
+  encapsulation: ViewEncapsulation.None 
 })
 export class UsuarioComponent implements OnInit {
   p: number = 1;
@@ -26,7 +28,7 @@ export class UsuarioComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '50%',
       height: '75%',
-      panelClass: 'my-dialog'
+      panelClass: 'my-dialog',
     });
 
     dialogRef.afterClosed().subscribe(result => {
