@@ -46,17 +46,18 @@ class TemaDao{
             return false;
         }
     }
-    function actualizarTema(Tema $tema){
-        $query = "UPDATE tema SET nombre = ?, archivoTema = ?, nombreArtista = ?, duracion = ?, valoracion = ?, imagen = ? WHERE idTema = ?";
+    function actualizarTema(Tema $tema, Usuario $usuario){
+        $query = "UPDATE tema SET nombre = ?, archivoTema = ?, nombreArtista = ?, duracion = ?, valoracion = ?, imagen = ? WHERE idTema = ? AND idUsuario = ?";
         $stmt = $this->conexion->prepare($query);
-        $stmt->bind_param("ssssisi",
+        $stmt->bind_param("ssssisii",
                         $tema->nombre,
                         $tema->archivoTema,
                         $tema->nombreArtista,
                         $tema->duracion,
                         $tema->valoracion,
                         $tema->imagen,
-                        $tema->idTema
+                        $tema->idTema,
+                        $usuario->idUsuario
         );
         if($stmt->execute()){
             return true;

@@ -156,6 +156,37 @@ class UsuarioDao{
         $this->conexion = $db;
         $this->crearTablaUsuario();
     }
+    function agregarAmigo(Usuario $usuarioLogeado, Usuario $usuarioAgregado){
+        $query = "INSERT INTO relacion(idUsuario1, idUsuario2, estado, accion) VALUES (??,0,?)";
+        // estado 0 pendiente, 1 aceptado, 2 denegado, 3 bloqueado/eliminado
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bind_param("iii", $usuarioLogeado->idUsuario, $usuarioAgregado->idUsuario, $usuarioLogeado->idUsuario);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
+    function mostrarSolicitudAmistad(Usuario $usuario){
+        // Plantear
+    }
+    function aceptarSolicitud(Usuario $usuarioLogeado, Usuario $usuarioSolicitud){
+        $query = "UPDATE relacion SET estado = 1 WHERE idUsuario1 = ? AND idUsuario2 = ? AND accion = ?";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bind_param("iii", $usuarioSolicitud->idUsuario, $usuarioLogeado->idUsuario, $usuarioSolicitud->idUsuario);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
+    function denegarSolicitud(Usuario $usuarioLogeado, Usuario $usuarioSolicitud){
+        $query = "UPDATE relacion SET estado = 2 WHERE idUsuario1 = ? AND idUsuario2 = ? AND accion = ?";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bind_param("iii", $usuarioSolicitud->idUsuario, $usuarioLogeado->idUsuario, $usuarioSolicitud->idUsuario);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
+    function bloquearAmigo(Usuario $usuarioLogeado, Usuario $usuarioSolicitud){
+        $query = "UPDATE relacion SET estado = 3 WHERE idUsuario1 = ? AND idUsuario2 = ? AND accion = ? AND estado = 1"; //sólo se podrá bloquear una vez agregado
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bind_param("iii", $usuarioSolicitud->idUsuario, $usuarioLogeado->idUsuario, $usuarioSolicitud->idUsuario);
+        $stmt->execute();
+        return $stmt->get_result();
 }
 
 ?>  
