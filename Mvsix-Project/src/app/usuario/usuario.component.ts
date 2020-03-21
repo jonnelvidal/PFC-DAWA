@@ -26,6 +26,7 @@ export class UsuarioComponent implements OnInit {
   
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      
       width: '50%',
       height: '75%',
       panelClass: 'my-dialog',
@@ -36,7 +37,10 @@ export class UsuarioComponent implements OnInit {
       
     });
   }
-  
+  iniciarSesion(){
+    console.log("hola");
+    this.ngOnInit();
+  }
   ngOnInit() {
     this.openDialog();
   }

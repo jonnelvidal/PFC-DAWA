@@ -1,12 +1,6 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.my-dialog .mat-dialog-container{
-    padding: 0 !important;
-}
-.my-dialog .mat-dialog-container{
-    overflow-y: hidden !important;
-}

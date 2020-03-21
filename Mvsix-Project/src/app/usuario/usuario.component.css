@@ -1,21 +1,20 @@
 .mat-dialog-title{
-    grid-area: header;
     text-align: center;
 }
 .formulario{
-    grid-area: body;
+    margin: auto;
 }
 .mat-dialog-actions{
-    grid-area: footer;
+    margin: auto;
 }
-::ng-deep .mat-dialog-content{
+.mat-dialog-container{
     height: 100%;
     width: 100%;
-    padding: 0px !important;
-    display: grid;
-    grid-template-columns: 25% 50% 25%;
-    grid-template-rows: 33% 34% 33%;
-    grid-template-areas: ". header ."
-                         "body body body"
-                         "footer footer footer";
+    margin: auto;
+    overflow-y: hidden;
+  /*
+  background-image: url("/assets/img/gvnggvng.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  */  
 }
