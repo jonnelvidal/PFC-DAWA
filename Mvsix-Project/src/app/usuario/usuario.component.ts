@@ -26,21 +26,18 @@ export class UsuarioComponent implements OnInit {
   
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      
       width: '50%',
-      height: '75%',
+      height: '50%',
       panelClass: 'my-dialog',
+      
     });
-
+    
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       
     });
   }
-  iniciarSesion(){
-    console.log("hola");
-    this.ngOnInit();
-  }
+  
   ngOnInit() {
     this.openDialog();
   }
@@ -52,11 +49,25 @@ export class UsuarioComponent implements OnInit {
   styleUrls: ['./usuario.component.css']
 })
 export class DialogOverviewExampleDialog {
-
+  usuarioLogeado: Usuario = {idUsuario: null, usuario: null, contrasena: null, email: null, nombre: null, apellido1:null, apellido2: null, fec_nac: null, pais: null, telefono: null, rol: null, fotoUsuario: null}
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-   ) {}
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>, private apiService: ApiService, public dialog: MatDialog
+   ) {
 
+   }
+   
+  
+  iniciarSesion(form){
+    this.apiService.loginUsuario(form.value).subscribe((usuario: Usuario)=>{
+      this.usuarioLogeado = usuario;
+      console.log("Usuario logeado, ", this.usuarioLogeado.usuario);
+      
+    });
+  }
+  registrar(){
+    this.dialogRef.updateSize("100px","100px");
+    
+  }
   onNoClick(): void {
     this.dialogRef.close();
   }

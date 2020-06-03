@@ -3,4 +3,17 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    margin: 0;
+}
+
+@font-face {
+    font-family: flavors-regular;
+    src: url(assets/font/Flavors-Regular.ttf) format("opentype");
+}
+html *
+{
+   
+   font-family: flavors-regular, "Helvetica Neue", sans-serif !important;
+   
+}

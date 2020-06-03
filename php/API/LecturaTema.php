@@ -27,7 +27,6 @@ if($stmt){
     $temas[$i]['valoracion'] = $row['valoracion'];
     $temas[$i]['imagen'] = $row['imagen'];
     $i++;
-
   }
 
   echo json_encode($temas);

@@ -1,20 +1,45 @@
 .mat-dialog-title{
     text-align: center;
+    color: white;
 }
-.formulario{
+legend{
+  color: white;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+fieldset{
     margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid black !important;
 }
 .mat-dialog-actions{
     margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 }
 .mat-dialog-container{
     height: 100%;
     width: 100%;
     margin: auto;
     overflow-y: hidden;
-  /*
+
   background-image: url("/assets/img/gvnggvng.png");
     background-size: 100%;
     background-repeat: no-repeat;
-  */  
 }
+/*Cambia el color por defecto del matInput*/
+::ng-deep .mat-focused .mat-form-field-label, ::ng-deep .mat-form-field-empty, ::ng-deep .mat-form-field {
+  /*change color of label*/
+  color: white !important;
+ } 
+::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple{
+  /*change color of underline*/
+  background-color: white !important;
+} 
+

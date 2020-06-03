@@ -1,52 +1,44 @@
-<div class="container">
+<div mat-dialog-container >
+  <h1 mat-dialog-title>Registro</h1>
   <form #f = "ngForm">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Datos usuario</th>
-          <th>Introducir datos</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Usuario</td>
-          <td><input type="text" name="usuario" [(ngModel)] = "usuarioSeleccionado.usuario"></td>
-        </tr>
-        <tr>
-          <td>Contraseña</td>
-          <td><input type="password" name="contrasena" [(ngModel)] = "usuarioSeleccionado.contrasena"></td>
-        </tr>
-        <tr>
-          <td>Correo electrónico</td>
-          <td><input type="email" name="email" [(ngModel)] = "usuarioSeleccionado.email"> </td>
-        </tr>
-        <tr>
-          <td>Nombre</td>
-          <td><input type="text" name="nombre" [(ngModel)] = "usuarioSeleccionado.nombre"></td>
-        </tr>
-        <tr>
-          <td>Primer Apellido</td>
-          <td><input type="text" name="apellido1" [(ngModel)] = "usuarioSeleccionado.apellido1"></td>
-        </tr>
-        <tr>
-          <td>Segundo Apellido</td>
-          <td><input type="text" name="apellido2" [(ngModel)] = "usuarioSeleccionado.apellido2"></td>
-        </tr>
-        <tr>
-          <td>Fecha de nacimiento</td>
-          <td><input type="date" name="fec_nac" [(ngModel)] = "usuarioSeleccionado.fec_nac"></td>
-        </tr>
-        <tr>
-          <td>País</td>
-          <td><input type="text" name="pais" [(ngModel)] = "usuarioSeleccionado.pais"></td>
-        </tr>
-        <tr>
-          <td>Teléfono</td>
-          <td><input type="number" name="telefono" [(ngModel)] = "usuarioSeleccionado.telefono"></td>
-        </tr>
-        <tr><td><input type="button" (click)="createOrUpdateUsuario(f)" value="Create or Update Policy" class="button"></td></tr>
-      </tbody>
-    </table>
+    <div class="formulario">
+      <fieldset>
+        <mat-form-field>
+          <legend>Datos del usuario</legend>
+          <input matInput name="usuario" placeholder="Usuario" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput name="contrasena" placeholder="Contraseña" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput name="email" placeholder="Correo Electrónico">
+        </mat-form-field>
+      </fieldset>
+      <fieldset>
+        <legend>Datos personales</legend>
+        <mat-form-field>
+          <input matInput name="nombre" placeholder="Nombre">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput name="apellido1" placeholder="Primer apellido">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput name="apellido2" placeholder="Segundo apellido">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput name="fec_nac" placeholder="Fecha de nacimiento">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput name="pais" placeholder="País">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput name="telefono" placeholder="Teléfono">
+        </mat-form-field>
+      </fieldset>
+    </div>
   </form>
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="iniciarSesion(f)">Iniciar Sesión</button>
+    <button mat-raised-button (click)="qwe()">Regístrate</button>
   </div>
-  
+</div>

@@ -14,15 +14,6 @@ export class PruebaComponent implements OnInit {
   usuarioSeleccionado: Usuario = {idUsuario: null, usuario: null, contrasena: null, email: null, nombre: null, apellido1:null, apellido2: null, fec_nac: null, pais: null, telefono: null, rol: null, fotoUsuario: null}
   
   constructor(private apiService: ApiService) { 
-    /* Prueba paginación
-
-    for(let i=1;i<=100;i++){
-      
-      let Obj = {'idUsuario': `idUsuario ${i}`,'usuario': `usuario ${i}`, 'contrasena': `contrasena ${i}`,'email': `email ${i}`,'nombre': `nombre ${i}`,'apellido1': `apellido1 ${i}`, 'apellido2': `apellido2 ${i}`,'fec_nac': `fec_nac ${i}`,'pais': `pais ${i}`,'telefono': `telefono ${i}`,'rol': `rol ${i}`}
-      this.usuarios.push(Obj);
-    }
-
-    */
 
   }
   createOrUpdateUsuario(form){
