@@ -1,0 +1,19 @@
+<div mat-dialog-container >
+  <form #f = "ngForm">
+    <div class="formulario">
+      <fieldset>
+        <legend>Iniciar Sesión</legend>
+        <mat-form-field>
+          <input matInput name="usuario" placeholder="Usuario">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput name="contrasena" placeholder="Contraseña">
+        </mat-form-field>
+      </fieldset>
+    </div>
+  </form>
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="iniciarSesion(f)">Iniciar Sesión</button>
+    <button mat-raised-button (click)="registrar()">Regístrate</button>
+  </div>
+</div>

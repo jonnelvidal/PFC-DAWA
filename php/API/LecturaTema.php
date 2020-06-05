@@ -11,7 +11,7 @@ $bbdd = $conexion->getConexion();
 
 $temaDao = new TemaDao($bbdd);
 
-$stmt = $temaDao->mostrarTemasUsuario();
+$stmt = $temaDao->mostrarTemas();
 
 $temas = [];
 

@@ -47,14 +47,22 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { LoginComponent } from './usuario/login/login.component';
+import { RegistroComponent } from './usuario/registro/registro.component';
+import { PerfilComponent } from './usuario/perfil/perfil.component';
+import { LoginModule } from './usuario/login/login.module';
+import { RegistroModule } from './usuario/registro/registro.module';
+import { PerfilModule } from './usuario/perfil/perfil.module';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
   declarations: [      
-    PruebaComponent, HeaderComponent, FooterComponent, UsuarioComponent, BodyCenterComponent, TemaComponent, PlaylistComponent, DialogOverviewExampleDialog
+    PruebaComponent, HeaderComponent, FooterComponent, UsuarioComponent, BodyCenterComponent, TemaComponent, PlaylistComponent, DialogOverviewExampleDialog,
   ],
   entryComponents: [DialogOverviewExampleDialog],
   imports: [
+    CommonModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -98,8 +106,13 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+
+    LoginModule, 
+    RegistroModule, 
+    PerfilModule,
     
   ],
+  exports: [ ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true, direction: 'ltr'}}
   ],

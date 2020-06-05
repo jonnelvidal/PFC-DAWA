@@ -3,50 +3,33 @@ import { Usuario } from 'src/entities/usuario';
 import { ApiService } from '../api.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {ViewEncapsulation} from '@angular/core';
+import { LoginComponent } from './login/login.component';
+import { Routes } from '@angular/router';
+import { PerfilComponent } from './perfil/perfil.component';
+import { RegistroComponent } from './registro/registro.component';
+
+const routes: Routes = [
+  { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
+  { path: 'perfil', loadChildren: () => import('./perfil/perfil.module').then( m=> m.PerfilModule) },
+  { path: 'registro', loadChildren: () =>import('./registro/registro.module').then( m=> m.RegistroModule) }
+  
+];
 @Component({
-  selector: 'app-usuario',
-  templateUrl: './login.component.html',
-  styleUrls: ['./usuario.component.css'],
+  selector: 'app-login',
+  templateUrl: './login/login.component.html',
+  styleUrls: ['./login/login.component.css'],
   encapsulation: ViewEncapsulation.None 
 })
 export class UsuarioComponent implements OnInit {
-  p: number = 1;
-  usuarios: Usuario[];
-  usuarioSeleccionado: Usuario = {idUsuario: null, usuario: null, contrasena: null, email: null, nombre: null, apellido1:null, apellido2: null, fec_nac: null, pais: null, telefono: null, rol: null, fotoUsuario: null}
-  usuarioLogeado: Usuario = {idUsuario: null, usuario: null, contrasena: null, email: null, nombre: null, apellido1:null, apellido2: null, fec_nac: null, pais: null, telefono: null, rol: null, fotoUsuario: null}
-  constructor(private apiService: ApiService, public dialog: MatDialog) { }
-  loginUsuario(form){
-    this.apiService.loginUsuario(form.value).subscribe((usuario: Usuario)=>{
-      this.usuarioLogeado = usuario;
-      console.log("Usuario logeado, ", this.usuarioLogeado);
-      this.ngOnInit();
-    });
-    
-  }
-  
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '50%',
-      height: '50%',
-      panelClass: 'my-dialog',
-      
-    });
-    
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      
-    });
-  }
-  
-  ngOnInit() {
-    this.openDialog();
+  ngOnInit(): void {
+    throw new Error("Method not implemented.");
   }
 
 }
 @Component({
   selector: 'app-login',
-  templateUrl: './login-dialog.component.html',
-  styleUrls: ['./usuario.component.css']
+  templateUrl: './login/login.component.html',
+  styleUrls: ['./login/login.component.css']
 })
 export class DialogOverviewExampleDialog {
   usuarioLogeado: Usuario = {idUsuario: null, usuario: null, contrasena: null, email: null, nombre: null, apellido1:null, apellido2: null, fec_nac: null, pais: null, telefono: null, rol: null, fotoUsuario: null}

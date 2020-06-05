@@ -83,10 +83,18 @@ class TemaDao{
             return false;
         }
     }
-    function mostrarTemasUsuario(){
-        $query = "SELECT * FROM tema 
-        t INNER JOIN usuario_tema ut ON ut.idTema = t.idTema WHERE ut.idUsuario = 4";
+    function mostrarTemas(){
+        $query = "SELECT * FROM tema";
         $stmt = $this->conexion->prepare($query);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
+    //No olvidarse de pasarle el parámetro Usuario $usuario
+    function mostrarTemasUsuario(Usuario $usuario){
+        $query = "SELECT * FROM tema 
+        t INNER JOIN usuario_tema ut ON ut.idTema = t.idTema WHERE ut.idUsuario = ?";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->biind_param("i", $usuario->idUsuario);
         $stmt->execute();
         return $stmt->get_result();
     }
