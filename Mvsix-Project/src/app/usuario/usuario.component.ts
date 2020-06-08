@@ -16,7 +16,7 @@ const routes: Routes = [
 ];
 @Component({
   selector: 'app-login',
-  templateUrl: './login/login.component.html',
+  templateUrl: './login-dialog.component.html',
   styleUrls: ['./login/login.component.css'],
   encapsulation: ViewEncapsulation.None 
 })

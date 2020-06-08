@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PruebaComponent } from './prueba/prueba.component';
-import { UsuarioComponent } from './usuario/usuario.component';
 import { TemaComponent } from './tema/tema.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 
