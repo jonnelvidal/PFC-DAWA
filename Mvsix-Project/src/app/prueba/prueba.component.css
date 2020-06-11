@@ -8,5 +8,8 @@ img{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: olivedrab;
+    background-color: transparent;
+    
+    border-radius: 5%;
+    margin: 0.5%;
 }

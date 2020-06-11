@@ -9,7 +9,7 @@
     <button mat-button (click)="deleteUsuario(usuario)">Delete</button>
     <button mat-button (click)="seleccionarUsuario(usuario)">Update</button>
   </mat-card>
-  <!--<h2>Usuarios</h2>
+  <!--  <h2>Usuarios</h2>
   <table class="table">
     <thead>
       <tr>
@@ -35,53 +35,3 @@
   </table>-->
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
-<form #f = "ngForm">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Datos usuario</th>
-        <th>Introducir datos</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Usuario</td>
-        <td><input type="text" name="usuario" [(ngModel)] = "usuarioSeleccionado.usuario"></td>
-      </tr>
-      <tr>
-        <td>Contraseña</td>
-        <td><input type="password" name="contrasena" [(ngModel)] = "usuarioSeleccionado.contrasena"></td>
-      </tr>
-      <tr>
-        <td>Correo electrónico</td>
-        <td><input type="email" name="email" [(ngModel)] = "usuarioSeleccionado.email"> </td>
-      </tr>
-      <tr>
-        <td>Nombre</td>
-        <td><input type="text" name="nombre" [(ngModel)] = "usuarioSeleccionado.nombre"></td>
-      </tr>
-      <tr>
-        <td>Primer Apellido</td>
-        <td><input type="text" name="apellido1" [(ngModel)] = "usuarioSeleccionado.apellido1"></td>
-      </tr>
-      <tr>
-        <td>Segundo Apellido</td>
-        <td><input type="text" name="apellido2" [(ngModel)] = "usuarioSeleccionado.apellido2"></td>
-      </tr>
-      <tr>
-        <td>Fecha de nacimiento</td>
-        <td><input type="date" name="fec_nac" [(ngModel)] = "usuarioSeleccionado.fec_nac"></td>
-      </tr>
-      <tr>
-        <td>País</td>
-        <td><input type="text" name="pais" [(ngModel)] = "usuarioSeleccionado.pais"></td>
-      </tr>
-      <tr>
-        <td>Teléfono</td>
-        <td><input type="number" name="telefono" [(ngModel)] = "usuarioSeleccionado.telefono"></td>
-      </tr>
-      <tr><td><input type="button" (click)="createOrUpdateUsuario(f)" value="Create or Update Policy" class="button"></td></tr>
-    </tbody>
-  </table>
-
-</form>

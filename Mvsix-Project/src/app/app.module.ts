@@ -1,78 +1,33 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from  '@angular/forms';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {NgxPaginationModule} from 'ngx-pagination';
 import { PruebaComponent } from './prueba/prueba.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { UsuarioComponent, DialogOverviewExampleDialog } from './usuario/usuario.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 import { BodyCenterComponent } from './body-center/body-center.component';
 import { TemaComponent } from './tema/tema.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatBadgeModule} from '@angular/material/badge';
-import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
-import {MatButtonModule} from '@angular/material/button';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatCardModule} from '@angular/material/card';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import {MatListModule} from '@angular/material/list';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatSelectModule} from '@angular/material/select';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatSortModule} from '@angular/material/sort';
-import {MatTableModule} from '@angular/material/table';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatTreeModule} from '@angular/material/tree';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { LoginComponent } from './usuario/login/login.component';
-import { RegistroComponent } from './usuario/registro/registro.component';
-import { PerfilComponent } from './usuario/perfil/perfil.component';
 import { LoginModule } from './usuario/login/login.module';
 import { RegistroModule } from './usuario/registro/registro.module';
 import { PerfilModule } from './usuario/perfil/perfil.module';
-import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
-
+import { DialogLogin } from './usuario/login/login.component';
 
 @NgModule({
   declarations: [      
-    PruebaComponent, HeaderComponent, FooterComponent, UsuarioComponent, BodyCenterComponent, TemaComponent, PlaylistComponent, DialogOverviewExampleDialog,
+    PruebaComponent, HeaderComponent, FooterComponent, UsuarioComponent, BodyCenterComponent, TemaComponent, PlaylistComponent, DialogLogin,
   ],
-  entryComponents: [DialogOverviewExampleDialog],
+  entryComponents: [DialogLogin,],
   imports: [
-    CommonModule,
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    AppRoutingModule,
-    NgbModule,
-    NgxPaginationModule,
-    BrowserAnimationsModule,
-
+  
     SharedModule,
+    AppRoutingModule,
+
+    BrowserModule,
+    BrowserAnimationsModule,
 
     LoginModule, 
     RegistroModule, 
@@ -81,8 +36,10 @@ import { SharedModule } from './shared/shared.module';
   ],
   exports: [ ],
   providers: [
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true, direction: 'ltr'}}
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true, direction: 'ltr'}},
+    
   ],
-  bootstrap: [HeaderComponent,FooterComponent,BodyCenterComponent]
+  bootstrap: [HeaderComponent,FooterComponent,BodyCenterComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

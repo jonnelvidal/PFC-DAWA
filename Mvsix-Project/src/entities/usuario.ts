@@ -1,5 +1,5 @@
 export class Usuario {
-
+    
     idUsuario: number;
     usuario: string;
     contrasena: string;
@@ -12,5 +12,10 @@ export class Usuario {
     telefono: number;
     rol: number;
     fotoUsuario: string;
+
+    constructor(usuario: string, contrasena: string){
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+    }
 
 }

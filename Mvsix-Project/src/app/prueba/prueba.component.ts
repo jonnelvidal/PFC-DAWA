@@ -36,7 +36,6 @@ export class PruebaComponent implements OnInit {
 
   seleccionarUsuario(usuario: Usuario){
     this.usuarioSeleccionado = usuario;
-    
     return this.usuarioSeleccionado;
   }
 

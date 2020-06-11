@@ -34,12 +34,10 @@ if($stmt){
     $i++;
 
   }
-
   echo json_encode($usuarios);
+  return http_response_code(200);
 }else{
-
-  http_response_code(404);
-  
+  return http_response_code(404);
 }
 
 ?>

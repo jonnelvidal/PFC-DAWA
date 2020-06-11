@@ -1,36 +1,63 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '../node_modules/bootstrap/dist/css/bootstrap.css';
+html * {
+    /*font-family: flavors-regular, "Helvetica Neue", sans-serif !important;*/
+    color: white !important;
+    font-family: Source Code Pro;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    letter-spacing: .4px;
+    font-size: 16px;
+    line-height: 1.75em;
+}
 
-html, body { height: 100%; }
-body { 
-    margin: 0;
+html,
+body {
+    height: 100%;
+    font-family: Source Code Pro;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    background-image: url("/assets/img/giphy.gif");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
 }
 
 @font-face {
     font-family: flavors-regular;
     src: url(assets/font/Flavors-Regular.ttf) format("opentype");
 }
-html *
-{
-   
-   /*font-family: flavors-regular, "Helvetica Neue", sans-serif !important;*/
-   
-   
+
+body {
+    font-family: Source Code Pro;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    letter-spacing: .4px;
+    color: rgba(255, 255, 255, .9);
+    font-size: 16px;
+    line-height: 1.75em;
 }
-head, body{
-    background-color:olivedrab;
-    animation-name: fondo_animado;
-    animation-duration: 5s infinite;
+
+app-header {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    top: 0;
+    left: 0;
 }
-div {
-    
-  }
-  
-@keyframes fondo_animado {
-    0%   {background-color:rgb(24, 22, 22);}
-    25%  {background-color:rgb(65, 65, 52);}
-    50%  {background-color:rgb(114, 143, 86);}
-    75%  {background-color:rgb(82, 129, 82);}
-    100% {background-color:olivedrab;}
+
+app-body-center {
+    position: relative;
+}
+
+app-footer {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    padding: 15px;
 }

@@ -34,6 +34,13 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { CookieService } from 'ngx-cookie-service';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const materialModule =  [MatAutocompleteModule,
   MatBadgeModule,
@@ -74,9 +81,24 @@ const materialModule =  [MatAutocompleteModule,
 @NgModule({
   declarations: [],
   imports: [
+
+    CommonModule,
+    HttpClientModule,
+    FormsModule,
+    NgbModule,
+    NgxPaginationModule,
     materialModule,
-    CommonModule
+    
   ],
-  exports: [materialModule]
+  exports: [
+
+    CommonModule,
+    HttpClientModule,
+    FormsModule,
+    NgbModule,
+    NgxPaginationModule,
+    materialModule
+  ],
+  providers: [CookieService]
 })
 export class SharedModule { }

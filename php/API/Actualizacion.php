@@ -22,6 +22,7 @@ if(isset($postdata) && !empty($postdata))
   if((int)$request->idUsuario === '' && trim($request->usuario) === '' && $request->contrasena === '' && $request->email === '' && $request->nombre === '' && $request->apellido1 === '' && $request->apellido2 === '' && $request->fec_nac === '' && $request->pais === '' && $request->telefono === '' && $request->fotoUsuario === ''){
     return http_response_code(400);
   }else{
+
     $user->setIdUsuario((int)$request->idUsuario);
     $user->setUsuario($request->usuario);
     $user->setContrasena($request->contrasena);
@@ -34,11 +35,11 @@ if(isset($postdata) && !empty($postdata))
     $user->setTelefono($request->telefono);
     $user->setFotoUsuario($request->fotoUsuario);
     $stmt = $usuarioDao->actualizarDatos($user);
+
   }
 
   if($stmt)
   {
-    
     $usuario = [
       'idUsuario' => $user->idUsuario,
       'usuario' => $user->usuario,
@@ -53,9 +54,10 @@ if(isset($postdata) && !empty($postdata))
       'fotoUsuario' => $user->fotoUsuario
     ];
     echo json_encode($usuario);
+    return http_response_code(200);
   }
   else
   {
-    http_response_code(422);
+    return http_response_code(422);
   }
 }

@@ -53,7 +53,8 @@ if(isset($postdata) && !empty($postdata))
       'telefono' => $user->telefono
     ];
     echo json_encode($usuario);
+    return http_response_code(200);
   }else{
-    http_response_code(422);
+    return http_response_code(422);
   }
 }
