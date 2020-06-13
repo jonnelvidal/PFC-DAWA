@@ -15,12 +15,13 @@ import { RegistroModule } from './usuario/registro/registro.module';
 import { PerfilModule } from './usuario/perfil/perfil.module';
 import { SharedModule } from './shared/shared.module';
 import { DialogLogin } from './usuario/login/login.component';
+import { DialogRegistro } from './usuario/registro/registro.component';
 
 @NgModule({
   declarations: [      
-    PruebaComponent, HeaderComponent, FooterComponent, UsuarioComponent, BodyCenterComponent, TemaComponent, PlaylistComponent, DialogLogin,
+    PruebaComponent, HeaderComponent, FooterComponent, UsuarioComponent, BodyCenterComponent, TemaComponent, PlaylistComponent, DialogLogin, DialogRegistro
   ],
-  entryComponents: [DialogLogin,],
+  entryComponents: [DialogLogin, DialogRegistro],
   imports: [
   
     SharedModule,

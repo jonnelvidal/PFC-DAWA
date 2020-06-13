@@ -1,89 +1,51 @@
-<form #f="ngForm" (ngSubmit)="createOrUpdateUsuario(); f.reset()">
-    <!--<table class="table">
-      <thead>
-        <tr>
-          <th>Datos usuario</th>
-          <th>Introducir datos</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Usuario</td>
-          <td><input type="text" name="usuario" [(ngModel)] = "usuarioSeleccionado.usuario"></td>
-        </tr>
-        <tr>
-          <td>Contraseña</td>
-          <td><input type="password" name="contrasena" [(ngModel)] = "usuarioSeleccionado.contrasena"></td>
-        </tr>
-        <tr>
-          <td>Correo electrónico</td>
-          <td><input type="email" name="email" [(ngModel)] = "usuarioSeleccionado.email"> </td>
-        </tr>
-        <tr>
-          <td>Nombre</td>
-          <td><input type="text" name="nombre" [(ngModel)] = "usuarioSeleccionado.nombre"></td>
-        </tr>
-        <tr>
-          <td>Primer Apellido</td>
-          <td><input type="text" name="apellido1" [(ngModel)] = "usuarioSeleccionado.apellido1"></td>
-        </tr>
-        <tr>
-          <td>Segundo Apellido</td>
-          <td><input type="text" name="apellido2" [(ngModel)] = "usuarioSeleccionado.apellido2"></td>
-        </tr>
-        <tr>
-          <td>Fecha de nacimiento</td>
-          <td><input type="date" name="fec_nac" [(ngModel)] = "usuarioSeleccionado.fec_nac"></td>
-        </tr>
-        <tr>
-          <td>País</td>
-          <td><input type="text" name="pais" [(ngModel)] = "usuarioSeleccionado.pais"></td>
-        </tr>
-        <tr>
-          <td>Teléfono</td>
-          <td><input type="number" name="telefono" [(ngModel)] = "usuarioSeleccionado.telefono"></td>
-        </tr>
-        <tr><td><input type="button" (click)="createOrUpdateUsuario(f)" value="Create or Update Policy" class="button"></td></tr>
-      </tbody>
-    </table>-->
-    <div class="formulario">
-        <fieldset>
-            <legend>Crear una cuenta</legend>
-            <fieldset>
-                <legend>Datos del usuario</legend>
-                <mat-form-field>
-                    <input matInput name="usuario" [(ngModel)]="usuarioSeleccionado.usuario" placeholder="Usuario">
-
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput name="contrasena" [(ngModel)]="usuarioSeleccionado.contrasena" placeholder="Contraseña">
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput type="email" name="email" [(ngModel)]="usuarioSeleccionado.email" placeholder="Correo electrónico">
-                </mat-form-field>
-            </fieldset>
-            <fieldset>
-                <legend>Datos personales</legend>
-                <mat-form-field>
-                    <input matInput name="nombre" [(ngModel)]="usuarioSeleccionado.nombre" placeholder="Nombre">
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput name="apellido1" [(ngModel)]="usuarioSeleccionado.apellido1" placeholder="Primer apellido">
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput name="apellido2" [(ngModel)]="usuarioSeleccionado.apellido2" placeholder="Segundo apellido">
-                </mat-form-field>
-                <mat-form-field>
-                    <input type="date" matInput name="fec_nac" [(ngModel)]="usuarioSeleccionado.fec_nac" placeholder="Fecha de Nacimiento">
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput name="pais" [(ngModel)]="usuarioSeleccionado.pais" placeholder="País">
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput name="telefono" [(ngModel)]="usuarioSeleccionado.telefono" placeholder="Teléfono">
-                </mat-form-field>
+<div mat-dialog-container>
+    <form #f="ngForm">
+        <div class="formulario">
+            <span>Crear una cuenta</span>
+            <mat-horizontal-stepper>
+                <mat-step>
+                    <ng-template matStepLabel>Datos del usuario</ng-template>
+                    <fieldset>
+                        <legend>Datos del usuario</legend>
+                        <mat-form-field>
+                            <input matInput name="usuario" [(ngModel)]="usuarioSeleccionado.usuario" placeholder="Usuario" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput name="contrasena" [(ngModel)]="usuarioSeleccionado.contrasena" placeholder="Contraseña" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput class="email" type="email" name="email" [(ngModel)]="usuarioSeleccionado.email" placeholder="Email" required>
+                        </mat-form-field>
+                    </fieldset>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Datos personales</ng-template>
+                    <fieldset>
+                        <legend>Datos personales</legend>
+                        <mat-form-field>
+                            <input matInput name="nombre" [(ngModel)]="usuarioSeleccionado.nombre" placeholder="Nombre" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput name="apellido1" [(ngModel)]="usuarioSeleccionado.apellido1" placeholder="Primer apellido" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput name="apellido2" [(ngModel)]="usuarioSeleccionado.apellido2" placeholder="Segundo apellido">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input type="date" matInput name="fec_nac" [(ngModel)]="usuarioSeleccionado.fec_nac" placeholder="Fecha de Nacimiento" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput name="pais" [(ngModel)]="usuarioSeleccionado.pais" placeholder="País">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput name="telefono" [(ngModel)]="usuarioSeleccionado.telefono" placeholder="Teléfono" required>
+                        </mat-form-field>
+                    </fieldset>
+                </mat-step>
+            </mat-horizontal-stepper>
+            <div mat-dialog-actions>
                 <button mat-raised-button (click)="createOrUpdateUsuario(f)">Iniciar Sesión</button>
-            </fieldset>
-        </fieldset>
-    </div>
-</form>
+            </div>
+        </div>
+    </form>
+</div>

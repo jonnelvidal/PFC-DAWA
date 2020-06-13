@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogLogin, {
       width: '50%',
-      height: '50%'
+      height : 'auto',
+      
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -48,12 +49,12 @@ export class DialogLogin {
   
   iniciarSesion(form) {
     this.apiService.loginUsuario(form.value).subscribe((usuario: Usuario) => {
-      this.usuarioLogeado = usuario
-
+      this.usuarioLogeado = usuario;
+      console.log(usuario);
     });
   }
   registrar() {
-    this.dialogRef.close();
+    //Llamar al diálogo de registro
   }
   onNoClick(): void {
     this.dialogRef.close();
