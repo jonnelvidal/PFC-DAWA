@@ -4,10 +4,10 @@
             <fieldset>
                 <legend>Iniciar Sesión</legend>
                 <mat-form-field>
-                    <input matInput name="usuario" [(ngModel)]="usuarioLogeado.usuario" placeholder="Usuario">
+                    <input matInput name="usuario" [(ngModel)]="usuarioLogeado.usuario" placeholder="Usuario" required>
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput name="contrasena" [(ngModel)]="usuarioLogeado.contrasena" placeholder="Contraseña">
+                    <input matInput name="contrasena" [(ngModel)]="usuarioLogeado.contrasena" placeholder="Contraseña" required>
                 </mat-form-field>
             </fieldset>
         </div>

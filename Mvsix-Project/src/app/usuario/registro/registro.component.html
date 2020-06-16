@@ -1,51 +1,66 @@
 <div mat-dialog-container>
-    <form #f="ngForm">
-        <div class="formulario">
-            <span>Crear una cuenta</span>
-            <mat-horizontal-stepper>
-                <mat-step>
-                    <ng-template matStepLabel>Datos del usuario</ng-template>
+    <div class="formulario">
+        <span>Crear una cuenta</span>
+        <mat-horizontal-stepper linear="true" #stepper>
+            <mat-step [stepControl]="datosUsuarioForm">
+                <ng-template matStepLabel>Datos del usuario</ng-template>
+                <form [formGroup]="datosUsuarioForm">
                     <fieldset>
-                        <legend>Datos del usuario</legend>
                         <mat-form-field>
-                            <input matInput name="usuario" [(ngModel)]="usuarioSeleccionado.usuario" placeholder="Usuario" required>
+                            <mat-label>Usuario</mat-label>
+                            <input matInput name="usuario" formControlName="usuario" placeholder="Ej.: miusuario123" [matTooltip]="informacion" matTooltipPosition="left" minlength="3" maxlength="45" required>
                         </mat-form-field>
                         <mat-form-field>
-                            <input matInput name="contrasena" [(ngModel)]="usuarioSeleccionado.contrasena" placeholder="Contraseña" required>
+                            <mat-label>Contraseña</mat-label>
+                            <input matInput name="contrasena" type="password" formControlName="contrasena" placeholder="Ej.: ABCDefgh.123" required>
                         </mat-form-field>
                         <mat-form-field>
-                            <input matInput class="email" type="email" name="email" [(ngModel)]="usuarioSeleccionado.email" placeholder="Email" required>
+                            <mat-label>Email</mat-label>
+                            <input matInput class="email" type="email" name="email" formControlName="email" placeholder="Ej.: mi_correo@mail.com" required>
                         </mat-form-field>
+                        <button mat-button matStepperNext>Siguiente</button>
                     </fieldset>
-                </mat-step>
-                <mat-step>
-                    <ng-template matStepLabel>Datos personales</ng-template>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="datosPersonalesForm">
+                <ng-template matStepLabel>Datos personales</ng-template>
+                <form [formGroup]="datosPersonalesForm">
                     <fieldset>
-                        <legend>Datos personales</legend>
                         <mat-form-field>
-                            <input matInput name="nombre" [(ngModel)]="usuarioSeleccionado.nombre" placeholder="Nombre" required>
+                            <mat-label>Nombre</mat-label>
+                            <input matInput name="nombre" formControlName="nombre" placeholder="Ej.: Jonnel Manuel" required>
                         </mat-form-field>
                         <mat-form-field>
-                            <input matInput name="apellido1" [(ngModel)]="usuarioSeleccionado.apellido1" placeholder="Primer apellido" required>
+                            <mat-label>Primer apellido</mat-label>
+                            <input matInput name="apellido1" formControlName="apellido1" placeholder="Ej.: Vidal" required>
                         </mat-form-field>
                         <mat-form-field>
-                            <input matInput name="apellido2" [(ngModel)]="usuarioSeleccionado.apellido2" placeholder="Segundo apellido">
+                            <mat-label>Segundo apellido</mat-label>
+                            <input matInput name="apellido2" formControlName="apellido2" placeholder="Ej.: Vidal" required>
                         </mat-form-field>
                         <mat-form-field>
-                            <input type="date" matInput name="fec_nac" [(ngModel)]="usuarioSeleccionado.fec_nac" placeholder="Fecha de Nacimiento" required>
+                            <mat-label>Fecha de Nacimiento</mat-label>
+                            <input type="date" matInput name="fec_nac" formControlName="fec_nac" placeholder="Ej.: 12/12/1998" required>
                         </mat-form-field>
                         <mat-form-field>
-                            <input matInput name="pais" [(ngModel)]="usuarioSeleccionado.pais" placeholder="País">
+                            <mat-label>País</mat-label>
+                            <input matInput name="pais" formControlName="pais" placeholder="Ej.: España" required>
                         </mat-form-field>
                         <mat-form-field>
-                            <input matInput name="telefono" [(ngModel)]="usuarioSeleccionado.telefono" placeholder="Teléfono" required>
+                            <mat-label>Teléfono</mat-label>
+                            <input matInput name="telefono" formControlName="telefono" placeholder="Ej.: 666666666" required>
                         </mat-form-field>
+                        <div mat-dialog-actions>
+                            <button mat-button matStepperPrevious>Atrás</button>
+                            <button mat-button (click)="registrarUsuario()">Finalizar</button>
+                        </div>
+
                     </fieldset>
-                </mat-step>
-            </mat-horizontal-stepper>
-            <div mat-dialog-actions>
-                <button mat-raised-button (click)="createOrUpdateUsuario(f)">Iniciar Sesión</button>
-            </div>
+                </form>
+            </mat-step>
+        </mat-horizontal-stepper>
+        <div mat-dialog-actions>
+            <button mat-raised-button (click)="createOrUpdateUsuario(f)">Iniciar Sesión</button>
         </div>
-    </form>
+    </div>
 </div>

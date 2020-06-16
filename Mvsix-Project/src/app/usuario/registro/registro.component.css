@@ -1,67 +1,67 @@
-legend {
-    color: white;
-    width: auto;
-    margin-left: auto;
-    margin-right: auto;
+::ng-deep .mat-step-header .mat-step-icon-selected {
+    background-color: gray;
+}
+
+::ng-deep .mat-focused .mat-form-field-label,
+::ng-deep .mat-form-field-empty,
+::ng-deep .mat-form-field {
+    /*change color of label*/
+    color: gray !important;
+    width: 100%;
+}
+
+::ng-deep .mat-form-field-underline,
+::ng-deep .mat-form-field-ripple {
+    /*change color of underline*/
+    background-color: gray !important;
+}
+
+::ng-deep .mat-form-field.mat-form-field-invalid ::ng-deep .mat-form-field-ripple {
+    background-color: red !important;
+}
+
+.mat-step-header[aria-selected="true"] {
+    background-color: lightgray !important;
+    border-radius: 10%;
+}
+
+.mat-step-header .mat-step-icon-state-edit {
+    background-color: gray;
+}
+
+.mat-step-icon-content {
+    display: none !important;
+}
+
+input {
+    width: 100%;
+}
+
+.my-tooltip {
+    white-space: pre-line;
 }
 
 fieldset {
-    margin: auto;
+    color: black;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    border: 2px solid white !important;
-    width: 75%;
+    margin: 5px;
+}
+
+input,
+textarea,
+[contenteditable] {
+    color: black;
+    caret-color: gray;
 }
 
 .mat-dialog-actions {
-    margin: auto;
+    color: black;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: row;
-}
-
-::ng-deep .mat-horizontal-stepper-header-container,
-.mat-horizontal-content-container,
-.mat-stepper-horizontal {
-    background-color: black;
-}
-
-.mat-dialog-container,
-.mat-horizontal-stepper,
-.mat-step {
-    height: 100%;
-    width: 100%;
-    margin: auto;
-    overflow-y: hidden;
-    /*background-image: url("/assets/img/gvnggvng.png");*/
-    background-color: black !important;
-    background-size: 100%;
-    background-repeat: no-repeat;
-}
-
-
-/*Cambia el color por defecto del matInput*/
-
-.matStepLabel {
-    color: white;
-}
-
-::ng-deep .mat-step-header .mat-step-icon-selected {
-    background-color: white;
-}
-
- ::ng-deep .mat-focused .mat-form-field-label,
- ::ng-deep .mat-form-field-empty,
- ::ng-deep .mat-form-field {
-    /*change color of label*/
-    color: white !important;
-}
-
- ::ng-deep .mat-form-field-underline,
- ::ng-deep .mat-form-field-ripple {
-    /*change color of underline*/
-    background-color: white !important;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    margin: 5px;
 }

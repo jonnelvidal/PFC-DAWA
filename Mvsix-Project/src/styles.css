@@ -3,7 +3,7 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.css';
 html * {
     /*font-family: flavors-regular, "Helvetica Neue", sans-serif !important;*/
-    color: darkgray !important;
+    /*color: darkgray !important;*/
     font-family: Source Code Pro;
     font-weight: 400;
     font-style: normal;
