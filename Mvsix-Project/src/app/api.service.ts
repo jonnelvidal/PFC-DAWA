@@ -19,7 +19,7 @@ export class ApiService {
     return this.httpClient.get<Usuario[]>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/Lectura.php`);
   }
   createUsuario(usuario: Usuario): Observable<Usuario>{
-    console.log("EEEEEEEEEEEEEEEOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO " +
+    console.log(
       this.httpClient.post<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/Creacion.php`, {observe: 'response'})
       );
     return this.httpClient.post<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/Creacion.php`, usuario);
