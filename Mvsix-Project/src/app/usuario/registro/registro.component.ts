@@ -14,7 +14,8 @@ export class RegistroComponent implements OnInit {
   usuarioRegistro: Usuario = { idUsuario: null, usuario: null, contrasena: null, email: null, nombre: null, apellido1: null, apellido2: null, fec_nac: null, pais: null, telefono: null, rol: null, fotoUsuario: null }
   datosUsuarioForm: FormGroup;
   datosPersonalesForm: FormGroup;
-  submit: Boolean = false;
+  errorhttp: Boolean = false;
+  mensajeError: string;
   constructor(private apiService: ApiService, private dialog: MatDialog, private _formBuilder: FormBuilder) {
 
   }
@@ -63,7 +64,6 @@ export class RegistroComponent implements OnInit {
       this.usuarioRegistro.telefono = this.datosPersonalesForm.value.telefono;
       return true;
     }
-
   }
   registrarUsuario() {
     this.submit = true;
@@ -90,7 +90,6 @@ export class DialogRegistro implements OnInit {
   informacion: string = "La longitud de caracteres debe estar entre 3 y 45";
   datosUsuarioForm: FormGroup;
   datosPersonalesForm: FormGroup;
-  submit: Boolean = false;
   errorhttp: Boolean = false;
   mensajeError: string;
   constructor(

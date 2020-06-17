@@ -1,17 +1,24 @@
 <div mat-dialog-container>
-    <form #f="ngForm">
-        <div class="formulario">
-            <fieldset>
-                <legend>Iniciar Sesión</legend>
-                <mat-form-field>
-                    <input matInput name="usuario" [(ngModel)]="usuarioLogeado.usuario" placeholder="Usuario" required>
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput name="contrasena" [(ngModel)]="usuarioLogeado.contrasena" placeholder="Contraseña" required>
-                </mat-form-field>
-            </fieldset>
-        </div>
+    <form [formGroup]="datosUsuarioForm">
+        <fieldset>
+            <legend>Iniciar Sesión</legend>
+            <mat-form-field>
+                <input matInput name="usuario" formControlName="usuario" placeholder="Usuario" required>
+                <mat-error *ngIf="datosUsuario.usuario.invalid">
+                    <mat-error *ngIf="datosUsuario.usuario.errors.required">Este campo es obligatorio</mat-error>
+                    <mat-error *ngIf="datosUsuario.usuario.errors.minlength || datosUsuario.usuario.errors.maxlength">El nombre de usuario debe estar entre 3 y 45 caracteres</mat-error>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput name="contrasena" formControlName="contrasena" placeholder="Contraseña" required>
+                <mat-error *ngIf="datosUsuario.contrasena.invalid">
+                    <mat-error *ngIf="datosUsuario.contrasena.errors.required">Este campo es obligatorio</mat-error>
+                    <mat-error *ngIf="datosUsuario.contrasena.errors.minlength || datosUsuario.contrasena.errors.maxlength">La contraseña debe contener entre 6 y 45 caracteres</mat-error>
+                </mat-error>
+            </mat-form-field>
+        </fieldset>
     </form>
+    <mat-error *ngIf="errorhttp">{{mensajeError}}</mat-error>
     <div mat-dialog-actions>
         <button mat-raised-button (click)="iniciarSesion(f)">Iniciar Sesión</button>
         <a routerLink="/registro"><button mat-raised-button (click)="registrar()">Regístrate</button></a>

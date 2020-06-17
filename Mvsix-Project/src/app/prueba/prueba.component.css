@@ -1,6 +1,7 @@
 img {
     width: 10%;
     height: 10%;
+    margin: 0.5% !important;
 }
 
 .mat-card {

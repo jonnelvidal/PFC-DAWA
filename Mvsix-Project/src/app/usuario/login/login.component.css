@@ -46,6 +46,10 @@ textarea,
     caret-color: gray;
 }
 
+.mat-error {
+    font-size: 12px;
+}
+
 
 /*
 ::ng-deep .mat-form-field-placeholder {

@@ -2,11 +2,9 @@
     <mat-card *ngFor="let usuario of usuarios | paginate: { itemsPerPage: 5, currentPage: p }">
         <img mat-card-image src="assets/img/{{usuario.fotoUsuario}}">
         <mat-card-title>{{ usuario.nombre }}</mat-card-title>
-        <mat-card-text>{{ usuario.apellido1 }}</mat-card-text>
-        <mat-card-text>{{ usuario.apellido2 }}</mat-card-text>
+        <mat-card-text>{{ usuario.apellido1}} {{usuario.apellido2}}</mat-card-text>
         <button mat-button routerLink="/prueba">Ver perfil</button>
         <button mat-button routerLink="/login">Agregar amigo</button>
-
     </mat-card>
     <!--  <h2>Usuarios</h2>
   <table class="table">
