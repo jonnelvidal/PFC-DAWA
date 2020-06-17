@@ -1,14 +1,31 @@
-img {
-    width: 10%;
-    height: 10%;
-    margin: 0.5% !important;
+.circular {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.circular img {
+    min-width: 100%;
+    min-height: 100%;
+    width: 10vh;
+    height: 10vh;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .mat-card {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     background-color: lightgray;
+    border-radius: 5%;
     margin: 0.5%;
 }

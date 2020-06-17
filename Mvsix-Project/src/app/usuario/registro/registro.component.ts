@@ -66,7 +66,6 @@ export class RegistroComponent implements OnInit {
     }
   }
   registrarUsuario() {
-    this.submit = true;
     if (this.establecerDatos()) {
       this.apiService.createUsuario(this.usuarioRegistro).subscribe(result => {
         console.log(result);
@@ -137,7 +136,6 @@ export class DialogRegistro implements OnInit {
 
   }
   registrarUsuario() {
-    this.submit = true;
     if (this.establecerDatos()) {
       this.apiService.createUsuario(this.usuarioRegistro).subscribe(result => {
         console.log(result);

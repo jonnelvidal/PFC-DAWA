@@ -5,15 +5,13 @@
             <mat-form-field>
                 <input matInput name="usuario" formControlName="usuario" placeholder="Usuario" required>
                 <mat-error *ngIf="datosUsuario.usuario.invalid">
-                    <mat-error *ngIf="datosUsuario.usuario.errors.required">Este campo es obligatorio</mat-error>
-                    <mat-error *ngIf="datosUsuario.usuario.errors.minlength || datosUsuario.usuario.errors.maxlength">El nombre de usuario debe estar entre 3 y 45 caracteres</mat-error>
+                    <mat-error *ngIf="datosUsuario.usuario.errors.required">Introduzca su usuario</mat-error>
                 </mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input matInput name="contrasena" formControlName="contrasena" placeholder="Contraseña" required>
+                <input matInput name="contrasena" type="password" formControlName="contrasena" placeholder="Contraseña" required>
                 <mat-error *ngIf="datosUsuario.contrasena.invalid">
-                    <mat-error *ngIf="datosUsuario.contrasena.errors.required">Este campo es obligatorio</mat-error>
-                    <mat-error *ngIf="datosUsuario.contrasena.errors.minlength || datosUsuario.contrasena.errors.maxlength">La contraseña debe contener entre 6 y 45 caracteres</mat-error>
+                    <mat-error *ngIf="datosUsuario.contrasena.errors.required">Introduzca su contraseña</mat-error>
                 </mat-error>
             </mat-form-field>
         </fieldset>
