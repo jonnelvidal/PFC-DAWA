@@ -1,15 +1,13 @@
-img{
+img {
     width: 10%;
     height: 10%;
-    border-radius: 50%;
 }
-.mat-card{
+
+.mat-card {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    background-color: transparent;
-    
-    border-radius: 5%;
+    background-color: lightgray;
     margin: 0.5%;
 }

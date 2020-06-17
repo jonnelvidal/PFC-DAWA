@@ -8,15 +8,28 @@
                     <fieldset>
                         <mat-form-field>
                             <mat-label>Usuario</mat-label>
-                            <input matInput name="usuario" formControlName="usuario" placeholder="Ej.: miusuario123" [matTooltip]="informacion" matTooltipPosition="left" minlength="3" maxlength="45" required>
+                            <input matInput name="usuario" formControlName="usuario" placeholder="Ej.: miusuario123" required>
+                            <mat-error *ngIf="datosUsuario.usuario.invalid">
+                                <mat-error *ngIf="datosUsuario.usuario.errors.required">Este campo es obligatorio</mat-error>
+                                <mat-error *ngIf="datosUsuario.usuario.errors.minlength || datosUsuario.usuario.errors.maxlength">El nombre de usuario debe estar entre 3 y 45 caracteres</mat-error>
+                            </mat-error>
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Contraseña</mat-label>
                             <input matInput name="contrasena" type="password" formControlName="contrasena" placeholder="Ej.: ABCDefgh.123" required>
+                            <mat-error *ngIf="datosUsuario.contrasena.invalid">
+                                <mat-error *ngIf="datosUsuario.contrasena.errors.required">Este campo es obligatorio</mat-error>
+                                <mat-error *ngIf="datosUsuario.contrasena.errors.minlength || datosUsuario.contrasena.errors.maxlength">La contraseña debe contener entre 6 y 45 caracteres</mat-error>
+                            </mat-error>
+
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Email</mat-label>
                             <input matInput class="email" type="email" name="email" formControlName="email" placeholder="Ej.: mi_correo@mail.com" required>
+                            <mat-error *ngIf="datosUsuario.email.invalid">
+                                <mat-error *ngIf="datosUsuario.email.errors.required">Este campo es obligatorio</mat-error>
+                                <mat-error *ngIf="datosUsuario.email.errors.minlength || datosUsuario.email.errors.maxlength">El nombre de usuario debe estar entre 3 y 45 caracteres</mat-error>
+                            </mat-error>
                         </mat-form-field>
                         <button mat-button matStepperNext>Siguiente</button>
                     </fieldset>
@@ -29,32 +42,56 @@
                         <mat-form-field>
                             <mat-label>Nombre</mat-label>
                             <input matInput name="nombre" formControlName="nombre" placeholder="Ej.: Jonnel Manuel" required>
+                            <mat-error *ngIf="datosPersonales.nombre.invalid">
+                                <mat-error *ngIf="datosPersonales.nombre.errors.required">Este campo es obligatorio</mat-error>
+                                <mat-error *ngIf="datosPersonales.nombre.errors.minlength || datosPersonales.nombre.errors.maxlength">El nombre de usuario debe estar entre 3 y 45 caracteres</mat-error>
+                            </mat-error>
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Primer apellido</mat-label>
                             <input matInput name="apellido1" formControlName="apellido1" placeholder="Ej.: Vidal" required>
+                            <mat-error *ngIf="datosPersonales.apellido1.invalid">
+                                <mat-error *ngIf="datosPersonales.apellido1.errors.required">Este campo es obligatorio</mat-error>
+                                <mat-error *ngIf="datosPersonales.apellido1.errors.minlength || datosPersonales.apellido1.errors.maxlength">El nombre de usuario debe estar entre 3 y 45 caracteres</mat-error>
+                            </mat-error>
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Segundo apellido</mat-label>
                             <input matInput name="apellido2" formControlName="apellido2" placeholder="Ej.: Vidal" required>
+                            <mat-error *ngIf="datosPersonales.apellido2.invalid">
+                                <mat-error *ngIf="datosPersonales.apellido2.errors.required">Este campo es obligatorio</mat-error>
+                                <mat-error *ngIf="datosPersonales.apellido2.errors.minlength || datosPersonales.apellido2.errors.maxlength">El nombre de usuario debe estar entre 3 y 45 caracteres</mat-error>
+                            </mat-error>
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Fecha de Nacimiento</mat-label>
                             <input type="date" matInput name="fec_nac" formControlName="fec_nac" placeholder="Ej.: 12/12/1998" required>
+                            <mat-error *ngIf="datosPersonales.fec_nac.invalid">
+                                <mat-error *ngIf="datosPersonales.fec_nac.errors.required">Este campo es obligatorio</mat-error>
+                                <mat-error *ngIf="datosPersonales.fec_nac.errors.minlength || datosPersonales.fec_nac.errors.maxlength">El nombre de usuario debe estar entre 3 y 45 caracteres</mat-error>
+                            </mat-error>
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>País</mat-label>
                             <input matInput name="pais" formControlName="pais" placeholder="Ej.: España" required>
+                            <mat-error *ngIf="datosPersonales.pais.invalid">
+                                <mat-error *ngIf="datosPersonales.pais.errors.required">Este campo es obligatorio</mat-error>
+                                <mat-error *ngIf="datosPersonales.pais.errors.minlength || datosPersonales.pais.errors.maxlength">El nombre de usuario debe estar entre 3 y 45 caracteres</mat-error>
+                            </mat-error>
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Teléfono</mat-label>
                             <input matInput name="telefono" formControlName="telefono" placeholder="Ej.: 666666666" required>
+                            <mat-error *ngIf="datosPersonales.telefono.invalid">
+                                <mat-error *ngIf="datosPersonales.telefono.errors.required">Este campo es obligatorio</mat-error>
+                                <mat-error *ngIf="datosPersonales.telefono.errors.minlength || datosPersonales.telefono.errors.maxlength">El nombre de usuario debe estar entre 3 y 45 caracteres</mat-error>
+                            </mat-error>
                         </mat-form-field>
                         <div mat-dialog-actions>
                             <button mat-button matStepperPrevious>Atrás</button>
                             <button mat-button (click)="registrarUsuario()">Finalizar</button>
                         </div>
-
+                        <mat-error *ngIf="errorhttp">{{mensajeError}}</mat-error>
                     </fieldset>
                 </form>
             </mat-step>

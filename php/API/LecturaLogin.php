@@ -16,30 +16,31 @@ if(isset($postdata) && !empty($postdata)){
   $request = json_decode($postdata);
 
   if(trim($request->usuario) === '' && $request->contrasena === ''){
-    return http_response_code(400);
+    return http_response_code(401);
   }else{
     $user->setUsuario($request->usuario);
     $user->setContrasena($request->contrasena);
+    if($usuarioDao->comprobarCuenta($user)){
+      $userInfo = $usuarioDao->infoPerfil($user);
+      $usuario = [
+        'idUsuario' => $userInfo->idUsuario,
+        'usuario' => $userInfo->usuario,
+        'contrasena' => $userInfo->contrasena,
+        'email' => $userInfo->email,
+        'nombre' => $userInfo->nombre,
+        'apellido1' => $userInfo->apellido1,
+        'apellido2' => $userInfo->apellido2,
+        'fec_nac' => $userInfo->fec_nac,
+        'pais' => $userInfo->pais,
+        'telefono' => $userInfo->telefono
+      ];
+      echo json_encode($usuario);
+      return http_response_code(200);
+    }else{
+      return http_response_code(400);
+    }
   }
-  if($usuarioDao->comprobarCuenta($user)){
-    $userInfo = $usuarioDao->infoPerfil($user);
-    $usuario = [
-      'idUsuario' => $userInfo->idUsuario,
-      'usuario' => $userInfo->usuario,
-      'contrasena' => $userInfo->contrasena,
-      'email' => $userInfo->email,
-      'nombre' => $userInfo->nombre,
-      'apellido1' => $userInfo->apellido1,
-      'apellido2' => $userInfo->apellido2,
-      'fec_nac' => $userInfo->fec_nac,
-      'pais' => $userInfo->pais,
-      'telefono' => $userInfo->telefono
-    ];
-    echo json_encode($usuario);
-    return http_response_code(200);
-  }else{
-    return http_response_code(422);
-  }
+  
 }
 
 ?>

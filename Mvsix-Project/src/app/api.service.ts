@@ -5,7 +5,6 @@ import { Tema } from  '../entities/tema';
 import { Observable } from  'rxjs';
 import { map } from  'rxjs/operators';
 import { Playlist } from 'src/entities/playlist';
-import { STATUS_CODES } from 'http';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +18,6 @@ export class ApiService {
     return this.httpClient.get<Usuario[]>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/Lectura.php`);
   }
   createUsuario(usuario: Usuario): Observable<Usuario>{
-    console.log(
-      this.httpClient.post<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/Creacion.php`, {observe: 'response'})
-      );
     return this.httpClient.post<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/Creacion.php`, usuario);
   }
   updateUsuario(usuario: Usuario): Observable<Usuario>{
