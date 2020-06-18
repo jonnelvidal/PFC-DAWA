@@ -26,7 +26,7 @@ class TemaDao{
     }
     
     function subirTema(Tema $tema, Usuario $usuario){
-        $query = "INSERT INTO tema(nombre, archivoTema, nombreArtista, duracion, valoracion, imagen) VALUES (?,?,?,?,?,?,?)";
+        $query = "INSERT INTO tema(nombre, archivoTema, nombreArtista, duracion, valoracion, imagen) VALUES (?,?,?,?,?,?)";
         $stmt = $this->conexion->prepare($query);
         $stmt->bind_param("sssiis", 
                         $tema->nombre,
@@ -36,14 +36,11 @@ class TemaDao{
                         $tema->valoracion,
                         $tema->imagen
         );
-        
         if($stmt->execute()){
-            $idTemaInsertado = mysql_query("SELECT LAST_INSERT_ID()");
-            $query2 = "INSERT INTO usuario_tema(idUsuario, idTema) VALUES (?,?)";
+            $query2 = "INSERT INTO usuario_tema(idUsuario, idTema) VALUES (?,(SELECT MAX(idTema) from tema))";
             $stmt2 = $this->conexion->prepare($query2);
-            $stmt2->bind_param("ii",
-                $usuario->idUsuario,
-                $idTemaInsertado
+            $stmt2->bind_param("i",
+                $usuario->idUsuario
             );
             if($stmt2->execute()){
                 return true;
@@ -94,7 +91,7 @@ class TemaDao{
         $query = "SELECT * FROM tema 
         t INNER JOIN usuario_tema ut ON ut.idTema = t.idTema WHERE ut.idUsuario = ?";
         $stmt = $this->conexion->prepare($query);
-        $stmt->biind_param("i", $usuario->idUsuario);
+        $stmt->bind_param("i", $usuario->idUsuario);
         $stmt->execute();
         return $stmt->get_result();
     }

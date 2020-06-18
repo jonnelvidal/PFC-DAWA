@@ -35,11 +35,14 @@ export class ApiService {
   readTemas(): Observable<Tema[]>{
     return this.httpClient.get<Tema[]>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/LecturaTema.php`);
   }
+  readTemasUsuario(usuario: Usuario): Observable<Tema[]>{
+    return this.httpClient.get<Tema[]>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/LecturaTemasUsuario.php/?idUsuario=${usuario.idUsuario}`);
+  }
   deleteTema(tema: Tema): Observable<Tema>{
     return this.httpClient.delete<Tema>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/EliminacionTema.php/?idTema=${tema.idTema}`);
   }
-  createTema(tema: Tema): Observable<Tema>{
-    return this.httpClient.post<Tema>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/CreacionTema.php`, tema);
+  createTema(tema: Tema, usuario: Usuario): Observable<Tema>{
+    return this.httpClient.post<Tema>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/CreacionTema.php/?idUsuario=${usuario.idUsuario}`, tema);
   }
   updateTema(tema: Tema): Observable<Tema>{
     return this.httpClient.put<Tema>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/ActualizacionTema.php`, tema);

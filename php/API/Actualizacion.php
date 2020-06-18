@@ -16,8 +16,6 @@ if(isset($postdata) && !empty($postdata))
 {
   // Extract the data.
   $request = json_decode($postdata);
-
-
   // Validate.
   if((int)$request->idUsuario === '' && trim($request->usuario) === '' && $request->contrasena === '' && $request->email === '' && $request->nombre === '' && $request->apellido1 === '' && $request->apellido2 === '' && $request->fec_nac === '' && $request->pais === '' && $request->telefono === '' && $request->fotoUsuario === ''){
     return http_response_code(400);

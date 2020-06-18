@@ -1,6 +1,6 @@
 <div class="container">
     <div class="circular">
-        <img src="assets/img/{{usuarioLogeado.fotoUsuario}}">
+        <img class="imgPerfil" src="assets/img/{{usuarioLogeado.fotoUsuario}}">
     </div>
     <div>
         <mat-sidenav-container class="sidenav-container">
@@ -40,12 +40,22 @@
     </ng-template>
     <ng-template #misamigos>
         <div>
-            <p>Mis amigos</p>
+            <mat-card *ngFor="let usuario of usuarios | paginate: { itemsPerPage: 5, currentPage: p }">
+                <div class="imgAmigos">
+                    <img src="assets/img/{{usuario.fotoUsuario}}">
+                </div>
+                <mat-card-title>{{ usuario.nombre }} {{ usuario.apellido1}} {{usuario.apellido2}}</mat-card-title>
+
+            </mat-card>
         </div>
     </ng-template>
     <ng-template #mistemas>
         <div>
-            <p>Mis temas</p>
+            <mat-card *ngFor="let tema of temas | paginate: { itemsPerPage: 5, currentPage: p }">
+
+                <mat-card-title>{{ tema.nombre }} {{ tema.duracion}} {{tema.valoracion}}</mat-card-title>
+
+            </mat-card>
         </div>
     </ng-template>
     <ng-template #mispublicaciones>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/entities/usuario';
 import { ApiService } from 'src/app/api.service';
 import { AuthService } from 'src/app/auth.service';
+import { Tema } from 'src/entities/tema';
 
 @Component({
   selector: 'app-perfil',
@@ -10,6 +11,7 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class PerfilComponent implements OnInit {
   usuarios: Usuario[];
+  temas: Tema[];
   usuarioLogeado: Usuario = { idUsuario: null, usuario: null, contrasena: null, email: null, nombre: null, apellido1: null, apellido2: null, fec_nac: null, pais: null, telefono: null, rol: null, fotoUsuario: null }
   seleccionado: number = 1;
   
@@ -30,6 +32,13 @@ export class PerfilComponent implements OnInit {
   }
   ngOnInit() {
     this.usuarioLogeado = this.auth.getUsuario();
+    this.apiService.readAmigos(this.usuarioLogeado).subscribe((usuarios: Usuario[])=>{
+      this.usuarios = usuarios;
+    });
+    this.apiService.readTemasUsuario(this.auth.getUsuario()).subscribe((temas: Tema[])=>{
+      this.temas = temas;
+      console.log(this.temas)
+    });
   }
 
 }

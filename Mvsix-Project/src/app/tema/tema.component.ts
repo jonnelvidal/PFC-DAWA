@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Tema } from '../../entities/tema';
 import { ApiService } from '../api.service';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-tema',
@@ -11,8 +12,9 @@ import { HttpClient } from '@angular/common/http';
 export class TemaComponent implements OnInit {
   p: number = 1;
   temas: Tema[];
+  subirTema: Boolean = false;
   temaSeleccionado: Tema ={idTema: null, nombre: null, archivoTema: null, duracion: null, imagen: null, nombreArtista: null, valoracion: null}
-  constructor(private apiService: ApiService, private httpx: HttpClient) { }
+  constructor(private apiService: ApiService, private auth: AuthService, private httpx: HttpClient) { }
   onSelectFile(event){
     const fd = new FormData();
     fd.append('image', event.target.files[0], event.target.files[0].name);
@@ -22,27 +24,22 @@ export class TemaComponent implements OnInit {
       });
   }
   createOrUpdateTema(form){
-    if(this.temaSeleccionado && this.temaSeleccionado.idTema){
-      form.value.idTema = this.temaSeleccionado.idTema;
-      console.log(form.value.idTema);
-      this.apiService.updateTema(form.value).subscribe((tema: Tema)=>{
-        console.log("Tema actualizado" , tema);
+    
+      this.temaSeleccionado = form.value;
+      console.log(this.temaSeleccionado);
+      console.log(this.auth.getUsuario());
+      this.apiService.createTema(this.temaSeleccionado, this.auth.getUsuario()).subscribe((tema: Tema)=>{
         this.ngOnInit();
       });
-    }
-    else{
-
-      this.apiService.createTema(form.value).subscribe((tema: Tema)=>{
-        console.log("Tema created, ", tema);
-        this.ngOnInit();
-      });
-    }
+  }
+  mostrarFormularioTema(){
+    
   }
   seleccionarTema(tema: Tema){
     this.temaSeleccionado = tema;
     return this.temaSeleccionado;
   }
-
+  
   deleteTema(tema: Tema){
     this.apiService.deleteTema(tema).subscribe((tema: Tema)=>{
       console.log("Tema deleted, ", tema);
@@ -51,7 +48,7 @@ export class TemaComponent implements OnInit {
     
   }
   ngOnInit() {
-    this.apiService.readTemas().subscribe((temas: Tema[])=>{
+    this.apiService.readTemasUsuario(this.auth.getUsuario()).subscribe((temas: Tema[])=>{
       this.temas = temas;
       console.log(this.temas)
     });

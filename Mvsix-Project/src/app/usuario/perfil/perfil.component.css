@@ -1,23 +1,17 @@
 .circular {
-    width: 375px;
-    height: 375px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     position: relative;
     overflow: hidden;
 }
 
-.circular img {
-    min-width: 100%;
-    min-height: 100%;
-    width: 10vh;
-    height: 10vh;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+.imgAmigos {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
 }
 
 .mat-card {
@@ -61,6 +55,7 @@ mat-list-item,
 mat-sidenav-content {
     width: 100%;
     height: 100%;
+    color: white !important;
 }
 
 .objetos {

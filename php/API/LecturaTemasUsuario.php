@@ -5,18 +5,18 @@ header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
 include_once("../Persistencia/temaDao.php");
+include_once("../Entidades/usuario.php");
 
 $conexion = new Conexion();
 $bbdd = $conexion->getConexion();
 
 $temaDao = new TemaDao($bbdd);
 
-$stmt = $temaDao->mostrarTemas();
-
 $temas = [];
-
+$user = new Usuario();
+$user->setIdUsuario($_GET['idUsuario']);
+$stmt = $temaDao->mostrarTemasUsuario($user);
 if($stmt){
-
   $i = 0;
   while($row = mysqli_fetch_assoc($stmt)){
     $temas[$i]['idTema'] = $row['idTema'];
@@ -33,7 +33,7 @@ if($stmt){
   return http_response_code(200);
 }else{
 
-  return http_response_code(404);
+    return http_response_code(404);
   
 }
 
