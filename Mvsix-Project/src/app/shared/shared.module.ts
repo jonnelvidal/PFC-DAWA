@@ -43,7 +43,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from '../usuario/login/login.component';
 import { RegistroComponent } from '../usuario/registro/registro.component';
-import { CarouselModule } from 'ngx-owl-carousel-o';
+
 const materialModule =  [MatAutocompleteModule,
   MatBadgeModule,
   MatBottomSheetModule,
@@ -91,7 +91,7 @@ const materialModule =  [MatAutocompleteModule,
     NgxPaginationModule,
     ReactiveFormsModule,
     materialModule,
-    CarouselModule
+    
   ],
   exports: [
 
@@ -101,8 +101,7 @@ const materialModule =  [MatAutocompleteModule,
     NgbModule,
     NgxPaginationModule,
     ReactiveFormsModule,
-    materialModule,
-    CarouselModule
+    materialModule
   ],
   providers: [CookieService, LoginComponent, RegistroComponent]
 })

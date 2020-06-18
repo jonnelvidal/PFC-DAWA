@@ -31,8 +31,8 @@ export class PersonaComponent implements OnInit {
     this.apiService.readUsuarios().subscribe((usuarios: Usuario[])=>{
       this.usuarios = usuarios;
     });
-    
-    
   }
-
+agregarAmigo(idUsuario){
+  console.log(idUsuario);
+}
 }

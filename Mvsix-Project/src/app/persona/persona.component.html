@@ -8,7 +8,7 @@
             <mat-card-subtitle>{{ usuario.apellido1}} {{usuario.apellido2}}</mat-card-subtitle>
             <div class="acciones">
                 <button mat-button routerLink="/perfil">Ver perfil</button>
-                <button mat-button routerLink="/perfil">Agregar amigo</button>
+                <button mat-button (click)="agregarAmigo(usuario.idUsuario)">Agregar amigo</button>
             </div>
         </mat-card-header>
     </mat-card>

@@ -70,11 +70,11 @@
                     </mat-card-content>
                     <div class="acciones">
                         <button mat-button routerLink="/perfil">Ver perfil</button>
-                        <button mat-button routerLink="/perfil">Eliminar amigo</button>
+                        <button mat-button (click)="eliminarAmigo(amigo.idUsuario)">Eliminar amigo</button>
                     </div>
                 </mat-card-header>
-                <pagination-controls (pageChange)="p = $event"></pagination-controls>
             </mat-card>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
     </ng-template>
     <ng-template #mistemas>

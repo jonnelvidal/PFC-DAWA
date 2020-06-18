@@ -41,5 +41,7 @@ export class PerfilComponent implements OnInit {
       console.log(this.temas)
     });
   }
-
+  eliminarAmigo(idUsuario){
+    console.log(idUsuario);
+  }
 }

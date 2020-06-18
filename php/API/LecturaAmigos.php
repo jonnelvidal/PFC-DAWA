@@ -10,14 +10,14 @@ $conexion = new Conexion();
 $bbdd = $conexion->getConexion();
 $user = new Usuario();
 $usuarioDao = new UsuarioDao($bbdd);
-$postdata = file_get_contents("php://input");
+$postdata = $_GET['idUsuario'];
 
 /* Se crea un array usuarios que se utilizará para obtener los datos en Angular */
 $usuarios = [];
 if(isset($postdata) && !empty($postdata))
 {
     $request = json_decode($postdata);
-    $user->setIdUsuario((int)$request->idUsuario);
+    $user->setIdUsuario($postdata);
     $stmt = $usuarioDao->mostrarAmigos($user);
     if($stmt){
     $i = 0;
@@ -35,7 +35,6 @@ if(isset($postdata) && !empty($postdata))
         $usuarios[$i]['rol'] = $row['rol'];
         $usuarios[$i]['fotoUsuario'] = $row['fotoUsuario'];
         $i++;
-
     }
     echo json_encode($usuarios);
     return http_response_code(200);

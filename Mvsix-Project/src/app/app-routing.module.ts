@@ -10,7 +10,6 @@ const routes: Routes = [
   { path: 'tema', component: TemaComponent },
   { path: 'playlist', component: PlaylistComponent },
   { path: '', component: PersonaComponent},
-  { path: 'inicio', component: InicioComponent},
   { path: 'login', loadChildren: () => import('./usuario/login/login.module').then(m => m.LoginModule) },
   { path: 'perfil', loadChildren: () => import('./usuario/perfil/perfil.module').then(m => m.PerfilModule) },
   { path: 'registro', loadChildren: () => import('./usuario/registro/registro.module').then(m => m.RegistroModule) }
