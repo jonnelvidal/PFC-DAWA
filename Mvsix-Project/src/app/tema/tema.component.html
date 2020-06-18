@@ -26,48 +26,50 @@
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
     <button (click)="mostrarFormularioTema()">Subir Tema</button>
 </div>
-<ng-container *ngIf="subirTema; then f"></ng-container>
+<ng-container *ngIf="subirTema; then formTema"></ng-container>
 <ng-template #formTema>
     <div>
-        <form>
-            <table class="table ">
-                <thead>
-                    <tr>
-                        <th>Datos usuario</th>
-                        <th>Introducir datos</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Nombre</td>
-                        <td><input type="text " name="nombre " [(ngModel)]="temaSeleccionado.nombre "></td>
-                    </tr>
-                    <tr>
-                        <td>Archivo Tema</td>
-                        <td><input type="text " name="archivoTema " [(ngModel)]="temaSeleccionado.archivoTema "></td>
-                    </tr>
-                    <tr>
-                        <td>Artista</td>
-                        <td><input type="text " name="nombreArtista " [(ngModel)]="temaSeleccionado.nombreArtista "></td>
-                    </tr>
-                    <tr>
-                        <td>Duracion</td>
-                        <td><input type="text " name="duracion " [(ngModel)]="temaSeleccionado.duracion "></td>
-                    </tr>
-                    <tr>
-                        <td>Valoracion</td>
-                        <td><input type="text " name="valoracion " [(ngModel)]="temaSeleccionado.valoracion "></td>
-                    </tr>
-                    <tr>
-                        <td>Imagen</td>
-                        <td><input type="file " (change)="onSelectFile($event) "></td>
-                    </tr>
-
-                    <tr>
-                        <td><input type="button " (click)="createOrUpdateTema(f) " value="Create or Update Policy " class="button "></td>
-                    </tr>
-                </tbody>
-            </table>
+        <form [formGroup]="formularioTema">
+            <fieldset>
+                <legend>Subir tema</legend>
+                <mat-form-field>
+                    <input matInput name="nombre" formControlName="nombre" placeholder="Nombre del tema" required>
+                    <mat-error *ngIf="datosTema.nombre.invalid">
+                        <mat-error *ngIf="datosTema.nombre.errors.required">Introduzca el nombre del tema</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput name="archivoTema" formControlName="archivoTema" placeholder="Archivo del tema" required>
+                    <mat-error *ngIf="datosTema.archivoTema.invalid">
+                        <mat-error *ngIf="datosTema.archivoTema.errors.required">Introduzca el archivo</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput name="nombreArtista" formControlName="nombreArtista" placeholder="Artista/Cantante" required>
+                    <mat-error *ngIf="datosTema.nombreArtista.invalid">
+                        <mat-error *ngIf="datosTema.nombreArtista.errors.required">Introduzca el nombre del artista</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput name="duracion" formControlName="duracion" placeholder="Duración del tema" required>
+                    <mat-error *ngIf="datosTema.duracion.invalid">
+                        <mat-error *ngIf="datosTema.duracion.errors.required">Introduzca la duración</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput name="valoracion" formControlName="valoracion" placeholder="Valoración" required>
+                    <mat-error *ngIf="datosTema.valoracion.invalid">
+                        <mat-error *ngIf="datosTema.valoracion.errors.required">Valoración</mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput name="imagen" formControlName="imagen" placeholder="Imágen o portada" required>
+                    <mat-error *ngIf="datosTema.imagen.invalid">
+                        <mat-error *ngIf="datosTema.imagen.errors.required">Introduzca la imágen o portada</mat-error>
+                    </mat-error>
+                </mat-form-field>
+            </fieldset>
         </form>
+
     </div>
 </ng-template>
