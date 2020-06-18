@@ -18,7 +18,7 @@ if(isset($postdata) && !empty($postdata))
 {
     $request = json_decode($postdata);
     $user->setIdUsuario((int)$request->idUsuario);
-    $stmt = $usuarioDao->mostrarAmigos();
+    $stmt = $usuarioDao->mostrarAmigos($user);
     if($stmt){
     $i = 0;
     while($row = mysqli_fetch_assoc($stmt)){
