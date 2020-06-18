@@ -32,7 +32,8 @@ if(isset($postdata) && !empty($postdata)){
         'apellido2' => $userInfo->apellido2,
         'fec_nac' => $userInfo->fec_nac,
         'pais' => $userInfo->pais,
-        'telefono' => $userInfo->telefono
+        'telefono' => $userInfo->telefono,
+        'fotoUsuario' => $userInfo->fotoUsuario,
       ];
       echo json_encode($usuario);
       return http_response_code(200);

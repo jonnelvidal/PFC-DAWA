@@ -9,7 +9,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
 @NgModule({
   declarations: [PerfilComponent],
   imports: [
-    CommonModule,
     PerfilRoutingModule,
     SharedModule
   ]

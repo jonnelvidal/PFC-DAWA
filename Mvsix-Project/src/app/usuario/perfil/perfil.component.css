@@ -1,0 +1,69 @@
+.circular {
+    width: 375px;
+    height: 375px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.circular img {
+    min-width: 100%;
+    min-height: 100%;
+    width: 10vh;
+    height: 10vh;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.mat-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: lightgray;
+    border-radius: 5%;
+    margin: 0.5%;
+}
+
+ul {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-attachment: fixed;
+}
+
+mat-sidenav-container,
+mat-sidenav,
+mat-toolbar,
+mat-nav-list,
+mat-list-item,
+mat-sidenav-content {
+    background-color: transparent;
+}
+
+mat-sidenav-container {
+    width: 100%;
+    height: 15%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+}
+
+mat-sidenav,
+mat-toolbar,
+mat-nav-list,
+mat-list-item,
+mat-sidenav-content {
+    width: 100%;
+    height: 100%;
+}
+
+.objetos {
+    display: flex;
+    justify-content: space-evenly;
+}

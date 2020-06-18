@@ -1,1 +1,55 @@
-<p>perfil works!</p>
+<div class="container">
+    <div class="circular">
+        <img src="assets/img/{{usuarioLogeado.fotoUsuario}}">
+    </div>
+    <div>
+        <mat-sidenav-container class="sidenav-container">
+            <mat-sidenav>
+                <mat-toolbar>Menu</mat-toolbar>
+                <mat-nav-list>
+                    <a class="button" (click)="ventana(1)">Mi información</a>
+                    <a class="button" (click)="ventana(2)">Mis amigos</a>
+                    <a class="button" (click)="ventana(3)">Mis temas</a>
+                    <a class="button" (click)="ventana(4)">Mis publicaciones</a>
+                </mat-nav-list>
+            </mat-sidenav>
+            <mat-sidenav-content>
+                <mat-toolbar class="objetos">
+                    <a class="button" (click)="ventana(1)">Mi información</a>
+                    <a class="button" (click)="ventana(2)">Mis amigos</a>
+                    <a class="button" (click)="ventana(3)">Mis temas</a>
+                    <a class="button" (click)="ventana(4)">Mis publicaciones</a>
+                </mat-toolbar>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    </div>
+    <ng-container *ngIf="seleccionado == 1; then informacion; then mispublicaciones"></ng-container>
+    <ng-container *ngIf="seleccionado == 2; then misamigos; then mispublicaciones"></ng-container>
+    <ng-container *ngIf="seleccionado == 3; then mistemas; then mispublicaciones"></ng-container>
+    <ng-container *ngIf="seleccionado == 4; then mispublicaciones; then mispublicaciones"></ng-container>
+    <ng-template #informacion>
+        <div>
+            <mat-card>
+                <mat-card-title>{{ usuarioLogeado.nombre }}</mat-card-title>
+                <mat-card-title>{{ usuarioLogeado.apellido1 }}</mat-card-title>
+                <mat-card-title>{{ usuarioLogeado.apellido2 }}</mat-card-title>
+                <mat-card-title>{{ usuarioLogeado.email }}</mat-card-title>
+                <mat-card-title>{{ usuarioLogeado.fec_nac }}</mat-card-title>
+            </mat-card>
+        </div>
+    </ng-template>
+    <ng-template #misamigos>
+        <div>
+            <p>Mis amigos</p>
+        </div>
+    </ng-template>
+    <ng-template #mistemas>
+        <div>
+            <p>Mis temas</p>
+        </div>
+    </ng-template>
+    <ng-template #mispublicaciones>
+        <div>
+            <p>Mi pubicaciones</p>
+        </div>
+    </ng-template>

@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation, Injectable } from '@angular/core'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Usuario } from 'src/entities/usuario';
 import { ApiService } from 'src/app/api.service';
+import { AuthService } from 'src/app/auth.service';
+
 import { CookieService } from 'ngx-cookie-service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -16,6 +18,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   usuarioLogeado: Usuario = { idUsuario: null, usuario: null, contrasena: null, email: null, nombre: null, apellido1: null, apellido2: null, fec_nac: null, pais: null, telefono: null, rol: null, fotoUsuario: null }
+  usuarioLogeado2: Usuario = { idUsuario: null, usuario: null, contrasena: null, email: null, nombre: null, apellido1: null, apellido2: null, fec_nac: null, pais: null, telefono: null, rol: null, fotoUsuario: null }
   datosUsuarioForm: FormGroup;
   errorhttp: Boolean = false;
   mensajeError: string;
@@ -71,11 +74,12 @@ export class LoginComponent implements OnInit {
 })
 export class DialogLogin implements OnInit {
   usuarioLogeado: Usuario = { idUsuario: null, usuario: null, contrasena: null, email: null, nombre: null, apellido1: null, apellido2: null, fec_nac: null, pais: null, telefono: null, rol: null, fotoUsuario: null }
+  usuarioLogeado2: Usuario = { idUsuario: null, usuario: null, contrasena: null, email: null, nombre: null, apellido1: null, apellido2: null, fec_nac: null, pais: null, telefono: null, rol: null, fotoUsuario: null }
   datosUsuarioForm: FormGroup;
   errorhttp: Boolean = false;
   mensajeError: string;
   constructor(
-    public dialogRef: MatDialogRef<DialogLogin>, private apiService: ApiService, public dialog: MatDialog, private _formBuilder: FormBuilder
+    public dialogRef: MatDialogRef<DialogLogin>, private apiService: ApiService, public dialog: MatDialog, private _formBuilder: FormBuilder, private auth: AuthService
   ) { }
 
   registrar() {
@@ -89,7 +93,6 @@ export class DialogLogin implements OnInit {
       return false;
     } else {
       this.usuarioLogeado.usuario = this.datosUsuarioForm.value.usuario;
-      console.log(this.datosUsuarioForm.value.usuario)
       this.usuarioLogeado.contrasena = this.datosUsuarioForm.value.contrasena;
       return true;
     }
@@ -97,9 +100,11 @@ export class DialogLogin implements OnInit {
   get datosUsuario() { return this.datosUsuarioForm.controls; }
   iniciarSesion() {
     this.establecerDatos();
-    console.log(this.usuarioLogeado);
     this.apiService.loginUsuario(this.usuarioLogeado).subscribe(result => {
-      console.log(result);
+      console.log(JSON.stringify(result));
+      this.auth.setUsuario(result);
+      console.log(this.auth.getUsuario());
+      this.dialogRef.close();
     }, error => {
       console.log(error.status);
       this.errorhttp = error.status;
