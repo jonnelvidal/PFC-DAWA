@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/auth.service';
 
 import { CookieService } from 'ngx-cookie-service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { RegistroComponent } from '../registro/registro.component';
 
 @Component({
   selector: 'app-login',
@@ -34,9 +35,8 @@ export class LoginComponent implements OnInit {
       height: 'auto',
 
     });
-    
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      location.reload();
     });
   }
   
@@ -79,11 +79,12 @@ export class DialogLogin implements OnInit {
   errorhttp: Boolean = false;
   mensajeError: string;
   constructor(
-    public dialogRef: MatDialogRef<DialogLogin>, private apiService: ApiService, public dialog: MatDialog, private _formBuilder: FormBuilder, private auth: AuthService
+    public dialogRef: MatDialogRef<DialogLogin>, private apiService: ApiService, public dialog: MatDialog, private _formBuilder: FormBuilder, private auth: AuthService,private dialogoRegistrar: RegistroComponent
   ) { }
 
   registrar() {
     this.dialogRef.close();
+    this.dialogoRegistrar.openDialog();
   }
   onNoClick(): void {
     this.dialogRef.close();

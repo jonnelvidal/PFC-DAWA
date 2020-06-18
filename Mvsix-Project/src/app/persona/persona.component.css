@@ -6,6 +6,12 @@
     overflow: hidden;
 }
 
+.acciones {
+    display: flex;
+    flex-direction: column;
+    align-content: space-evenly;
+}
+
 .circular img {
     min-width: 100%;
     min-height: 100%;

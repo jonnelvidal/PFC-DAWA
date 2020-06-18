@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/api.service';
 import { Usuario } from 'src/entities/usuario';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-registro',
@@ -92,7 +93,7 @@ export class DialogRegistro implements OnInit {
   errorhttp: Boolean = false;
   mensajeError: string;
   constructor(
-    public dialogRef: MatDialogRef<DialogRegistro>, private apiService: ApiService, public dialog: MatDialog, private _formBuilder: FormBuilder
+    public dialogRef: MatDialogRef<DialogRegistro>, private apiService: ApiService, public dialog: MatDialog, private _formBuilder: FormBuilder, private dialogoLogin: LoginComponent
   ) { }
 
   onNoClick(): void {
@@ -114,6 +115,10 @@ export class DialogRegistro implements OnInit {
       telefono: ['', Validators.required]
     });
   }
+  iniciarSesion() {
+    this.dialogRef.close();
+    this.dialogoLogin.openDialog();
+  }
   get datosUsuario() { return this.datosUsuarioForm.controls; }
   get datosPersonales() { return this.datosPersonalesForm.controls; }
   establecerDatos() {
@@ -131,6 +136,12 @@ export class DialogRegistro implements OnInit {
       this.usuarioRegistro.fec_nac = this.datosPersonalesForm.value.fec_nac;
       this.usuarioRegistro.pais = this.datosPersonalesForm.value.pais;
       this.usuarioRegistro.telefono = this.datosPersonalesForm.value.telefono;
+      if(this.datosPersonalesForm.value.fotoUsuario == null || this.datosPersonalesForm.value.fotoUsuario == ''){
+        this.usuarioRegistro.fotoUsuario = "prof.png";
+      }else{
+        this.usuarioRegistro.fotoUsuario = this.datosPersonalesForm.value.fotoUsuario;
+      }
+      
       return true;
     }
 
@@ -139,6 +150,8 @@ export class DialogRegistro implements OnInit {
     if (this.establecerDatos()) {
       this.apiService.createUsuario(this.usuarioRegistro).subscribe(result => {
         console.log(result);
+        this.dialogRef.close();
+        this.dialogoLogin.openDialog();
       }, error => {
         console.log(error.status);
         this.errorhttp = error.status;

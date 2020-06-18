@@ -85,6 +85,7 @@
                             <mat-error *ngIf="datosPersonales.telefono.errors.minlength || datosPersonales.telefono.errors.maxlength">El nombre de usuario debe estar entre 3 y 45 caracteres</mat-error>
                         </mat-error>
                     </mat-form-field>
+
                     <div mat-dialog-actions>
                         <button mat-button matStepperPrevious>Atrás</button>
                         <button mat-button (click)="registrarUsuario()">Finalizar</button>
@@ -95,7 +96,8 @@
         </mat-step>
     </mat-horizontal-stepper>
     <div mat-dialog-actions>
-        <button mat-raised-button (click)="createOrUpdateUsuario(f)">Iniciar Sesión</button>
+        <p>¿ Ya tienes una cuenta ?<button mat-raised-button (click)="iniciarSesion()">Iniciar Sesión</button> </p>
+
     </div>
 
 </div>

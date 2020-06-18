@@ -1,16 +1,13 @@
 <div class="container">
-    <div class="circular">
-        <img class="imgPerfil" src="assets/img/{{usuarioLogeado.fotoUsuario}}">
-    </div>
     <div>
         <mat-sidenav-container class="sidenav-container">
             <mat-sidenav>
                 <mat-toolbar>Menu</mat-toolbar>
                 <mat-nav-list>
-                    <a class="button" (click)="ventana(1)">Mi información</a>
-                    <a class="button" (click)="ventana(2)">Mis amigos</a>
-                    <a class="button" (click)="ventana(3)">Mis temas</a>
-                    <a class="button" (click)="ventana(4)">Mis publicaciones</a>
+                    <a (click)="ventana(1)">Mi información</a>
+                    <a (click)="ventana(2)">Mis amigos</a>
+                    <a (click)="ventana(3)">Mis temas</a>
+                    <a (click)="ventana(4)">Mis publicaciones</a>
                 </mat-nav-list>
             </mat-sidenav>
             <mat-sidenav-content>
@@ -30,31 +27,61 @@
     <ng-template #informacion>
         <div>
             <mat-card>
-                <mat-card-title>{{ usuarioLogeado.nombre }}</mat-card-title>
-                <mat-card-title>{{ usuarioLogeado.apellido1 }}</mat-card-title>
-                <mat-card-title>{{ usuarioLogeado.apellido2 }}</mat-card-title>
-                <mat-card-title>{{ usuarioLogeado.email }}</mat-card-title>
-                <mat-card-title>{{ usuarioLogeado.fec_nac }}</mat-card-title>
+                <div mat-card-avatar class="circular">
+                    <img class="imgPerfil" src="assets/img/{{usuarioLogeado.fotoUsuario}}">
+                </div>
+                <mat-card-content>
+                    <mat-card-title>Nombre</mat-card-title>
+                    <mat-card-subtitle>{{ usuarioLogeado.nombre }}</mat-card-subtitle>
+                </mat-card-content>
+                <mat-card-content>
+                    <mat-card-title>Primer apellido</mat-card-title>
+                    <mat-card-subtitle>{{ usuarioLogeado.apellido1 }}</mat-card-subtitle>
+                </mat-card-content>
+                <mat-card-content>
+                    <mat-card-title>Segundo apellido</mat-card-title>
+                    <mat-card-subtitle>{{ usuarioLogeado.apellido2 }}</mat-card-subtitle>
+                </mat-card-content>
+                <mat-card-content>
+                    <mat-card-title>Correo electrónico</mat-card-title>
+                    <mat-card-subtitle>{{ usuarioLogeado.email }}</mat-card-subtitle>
+                </mat-card-content>
+                <mat-card-content>
+                    <mat-card-title>Fecha de nacimiento</mat-card-title>
+                    <mat-card-subtitle>{{ usuarioLogeado.fec_nac }}</mat-card-subtitle>
+                </mat-card-content>
             </mat-card>
         </div>
     </ng-template>
     <ng-template #misamigos>
         <div>
-            <mat-card *ngFor="let usuario of usuarios | paginate: { itemsPerPage: 5, currentPage: p }">
-                <div class="imgAmigos">
-                    <img src="assets/img/{{usuario.fotoUsuario}}">
-                </div>
-                <mat-card-title>{{ usuario.nombre }} {{ usuario.apellido1}} {{usuario.apellido2}}</mat-card-title>
+            <mat-card *ngFor="let amigo of amigos | paginate: { itemsPerPage: 2, currentPage: p }">
+                <mat-card-header>
+                    <div mat-card-avatar class="imgAmigos">
+                        <img src="assets/img/{{amigo.fotoUsuario}}">
+                    </div>
+                    <mat-card-content>
+                        <mat-card-title>{{ amigo.nombre }}
+                            <mat-card-subtitle>
+                                {{ amigo.apellido1}} {{amigo.apellido2}}
+                            </mat-card-subtitle>
+                        </mat-card-title>
 
+                    </mat-card-content>
+                    <div class="acciones">
+                        <button mat-button routerLink="/perfil">Ver perfil</button>
+                        <button mat-button routerLink="/perfil">Eliminar amigo</button>
+                    </div>
+                </mat-card-header>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
             </mat-card>
         </div>
     </ng-template>
     <ng-template #mistemas>
         <div>
-            <mat-card *ngFor="let tema of temas | paginate: { itemsPerPage: 5, currentPage: p }">
+            <mat-card *ngFor="let tema of temas | paginate: { itemsPerPage: 2, currentPage: p }">
 
                 <mat-card-title>{{ tema.nombre }} {{ tema.duracion}} {{tema.valoracion}}</mat-card-title>
-
             </mat-card>
         </div>
     </ng-template>
@@ -63,3 +90,5 @@
             <p>Mi pubicaciones</p>
         </div>
     </ng-template>
+
+</div>

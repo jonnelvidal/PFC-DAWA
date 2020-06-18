@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { PruebaComponent } from './prueba/prueba.component';
+import { PersonaComponent } from './persona/persona.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { UsuarioComponent } from './usuario/usuario.component';
@@ -16,10 +16,11 @@ import { PerfilModule } from './usuario/perfil/perfil.module';
 import { SharedModule } from './shared/shared.module';
 import { DialogLogin } from './usuario/login/login.component';
 import { DialogRegistro } from './usuario/registro/registro.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 @NgModule({
   declarations: [      
-    PruebaComponent, HeaderComponent, FooterComponent, UsuarioComponent, BodyCenterComponent, TemaComponent, PlaylistComponent, DialogLogin, DialogRegistro
+    PersonaComponent, HeaderComponent, FooterComponent, UsuarioComponent, BodyCenterComponent, TemaComponent, PlaylistComponent, DialogLogin, DialogRegistro, InicioComponent
   ],
   entryComponents: [DialogLogin, DialogRegistro],
   imports: [

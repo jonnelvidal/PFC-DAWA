@@ -1,0 +1,16 @@
+<div class="container">
+    <mat-card *ngFor="let usuario of usuarios | paginate: { itemsPerPage: 5, currentPage: p }">
+        <mat-card-header>
+            <div mat-card-avatar class="circular">
+                <img src="assets/img/{{usuario.fotoUsuario}}">
+            </div>
+            <mat-card-title>{{ usuario.nombre }}</mat-card-title>
+            <mat-card-subtitle>{{ usuario.apellido1}} {{usuario.apellido2}}</mat-card-subtitle>
+            <div class="acciones">
+                <button mat-button routerLink="/perfil">Ver perfil</button>
+                <button mat-button routerLink="/perfil">Agregar amigo</button>
+            </div>
+        </mat-card-header>
+    </mat-card>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

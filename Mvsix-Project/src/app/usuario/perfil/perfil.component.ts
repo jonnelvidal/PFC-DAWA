@@ -10,10 +10,11 @@ import { Tema } from 'src/entities/tema';
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit {
-  usuarios: Usuario[];
+  amigos: Usuario[];
   temas: Tema[];
   usuarioLogeado: Usuario = { idUsuario: null, usuario: null, contrasena: null, email: null, nombre: null, apellido1: null, apellido2: null, fec_nac: null, pais: null, telefono: null, rol: null, fotoUsuario: null }
   seleccionado: number = 1;
+  p: number = 1;
   
   constructor(private apiService: ApiService, private auth: AuthService) { 
   }
@@ -33,7 +34,7 @@ export class PerfilComponent implements OnInit {
   ngOnInit() {
     this.usuarioLogeado = this.auth.getUsuario();
     this.apiService.readAmigos(this.usuarioLogeado).subscribe((usuarios: Usuario[])=>{
-      this.usuarios = usuarios;
+      this.amigos = usuarios;
     });
     this.apiService.readTemasUsuario(this.auth.getUsuario()).subscribe((temas: Tema[])=>{
       this.temas = temas;
