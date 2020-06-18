@@ -42,6 +42,10 @@ export class PerfilComponent implements OnInit {
     });
   }
   eliminarAmigo(idUsuario){
-    console.log(idUsuario);
+    let idUsuarios = this.auth.getUsuario().idUsuario + ":" +  idUsuario;
+    console.log(idUsuarios)
+    this.apiService.deleteAmigo(idUsuarios).subscribe(result => {
+      this.ngOnInit();
+    });
   }
 }

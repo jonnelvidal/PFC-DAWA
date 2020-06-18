@@ -29,6 +29,10 @@ export class ApiService {
   deleteUsuario(usuario: Usuario): Observable<Usuario>{
     return this.httpClient.delete<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/Eliminacion.php/?idUsuario=${usuario.idUsuario}`);
   }
+  deleteAmigo(idUsuarios): Observable<Usuario>{
+    console.log(idUsuarios);
+    return this.httpClient.delete<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/EliminacionAmigo.php/?idUsuarios=${idUsuarios}`);
+  }
   loginUsuario(usuario: Usuario): Observable<Usuario>{
     return this.httpClient.post<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/LecturaLogin.php`, usuario);
   }

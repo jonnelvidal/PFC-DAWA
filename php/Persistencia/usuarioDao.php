@@ -130,7 +130,19 @@ class UsuarioDao{
         }else{
             return false;
         }
-        
+    }
+    function eliminarAmigo($idUsuario1, $idUsuario2){
+        $query = "DELETE FROM relacion WHERE idUsuario1 = ? AND idUsuario2 = ?";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bind_param("ii", 
+            $idUsuario1,
+            $idUsuario2
+        );
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
     }
     function buscarUsuario(Usuario $usuario){
         $query = "CALL buscarUsuario(?)";
