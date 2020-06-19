@@ -144,6 +144,20 @@ class UsuarioDao{
             return false;
         }
     }
+    function agregarAmigo($idUsuario1, $idUsuario2){
+        $query = "INSERT INTO relacion(idUsuario1, idUsuario2, estado, accion) VALUES (?,?,1,?)";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bind_param("iii", 
+            $idUsuario1,
+            $idUsuario2,
+            $idUsuario1
+        );
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
     function buscarUsuario(Usuario $usuario){
         $query = "CALL buscarUsuario(?)";
         $stmt = $this->conexion->prepare($query);

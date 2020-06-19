@@ -46,6 +46,14 @@ export class PerfilComponent implements OnInit {
     console.log(idUsuarios)
     this.apiService.deleteAmigo(idUsuarios).subscribe(result => {
       this.ngOnInit();
-    });
+    }, error => {
+      console.log(error.status);
+      if(error.status == 200){
+        this.mensajeError = "El usuario o la contraseña son incorrectos.";
+        this.errorhttp = true;
+        return this.errorhttp;
+      }
+      });
+      
   }
 }

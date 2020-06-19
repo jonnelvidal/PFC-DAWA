@@ -137,12 +137,11 @@ export class DialogRegistro implements OnInit {
       this.usuarioRegistro.fec_nac = this.datosPersonalesForm.value.fec_nac;
       this.usuarioRegistro.pais = this.datosPersonalesForm.value.pais;
       this.usuarioRegistro.telefono = this.datosPersonalesForm.value.telefono;
-      if(this.datosPersonalesForm.value.fotoUsuario == null || this.datosPersonalesForm.value.fotoUsuario == ''){
+      if(this.datosPersonalesForm.value.fotoUsuario == null || this.datosPersonalesForm.value.fotoUsuario == '' || this.usuarioRegistro.fotoUsuario == null || this.usuarioRegistro.fotoUsuario == ''){
         this.usuarioRegistro.fotoUsuario = "prof.png";
       }else{
         this.usuarioRegistro.fotoUsuario = this.datosPersonalesForm.value.fotoUsuario;
       }
-      
       return true;
     }
 

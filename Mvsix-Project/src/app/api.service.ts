@@ -26,6 +26,10 @@ export class ApiService {
   createUsuario(usuario: Usuario): Observable<Usuario>{
     return this.httpClient.post<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/Creacion.php`, usuario);
   }
+  createAmigo(idUsuarios): Observable<Usuario>{
+    console.log(idUsuarios);
+    return this.httpClient.get<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/CreacionAmigo.php/?idUsuarios=${idUsuarios}`);
+  }
   updateUsuario(usuario: Usuario): Observable<Usuario>{
     return this.httpClient.put<Usuario>(`${this.PHP_API_SERVER}/PFC-DAWA/php/API/Actualizacion.php`, usuario);
   }

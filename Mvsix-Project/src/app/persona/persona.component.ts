@@ -33,6 +33,10 @@ export class PersonaComponent implements OnInit {
     });
   }
 agregarAmigo(idUsuario){
-  console.log(idUsuario);
+  let idUsuarios = this.auth.getUsuario().idUsuario + ":" +  idUsuario;
+  console.log(idUsuarios);
+  this.apiService.createAmigo(idUsuarios).subscribe(result => { 
+    console.log(result)
+  });
 }
 }
