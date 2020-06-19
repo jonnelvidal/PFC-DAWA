@@ -1,16 +1,50 @@
-<div class="container">
-    <mat-card *ngFor="let usuario of usuarios | paginate: { itemsPerPage: 5, currentPage: p }">
-        <mat-card-header>
-            <div mat-card-avatar class="circular">
-                <img src="assets/img/{{usuario.fotoUsuario}}">
-            </div>
-            <mat-card-title>{{ usuario.nombre }}</mat-card-title>
-            <mat-card-subtitle>{{ usuario.apellido1}} {{usuario.apellido2}}</mat-card-subtitle>
-            <div class="acciones">
-                <button mat-button routerLink="/perfil">Ver perfil</button>
-                <button mat-button (click)="agregarAmigo(usuario.idUsuario)">Agregar amigo</button>
-            </div>
-        </mat-card-header>
-    </mat-card>
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+<div class="personas">
+    <div class="container">
+        <mat-card *ngFor="let usuario of usuarios | paginate: { itemsPerPage: 5, currentPage: p }">
+
+            <mat-card-header>
+                <div mat-card-avatar class="circular">
+                    <img src="assets/img/{{usuario.fotoUsuario}}">
+                </div>
+                <mat-card-title>{{ usuario.nombre }}</mat-card-title>
+                <mat-card-subtitle>{{ usuario.apellido1}} {{usuario.apellido2}}</mat-card-subtitle>
+                <div class="acciones">
+                    <button mat-button (click)="verPerfil(usuario)">Ver perfil</button>
+                    <button mat-button (click)="agregarAmigo(usuario.idUsuario)">Agregar amigo</button>
+                </div>
+            </mat-card-header>
+        </mat-card>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <ng-container *ngIf="usuarioPerfil != null; then mostrarPerfilUsuarioSeleccionado">
+    </ng-container>
+    <ng-template #mostrarPerfilUsuarioSeleccionado>
+        <div class="perfilPersona">
+            <mat-card>
+                <div mat-card-avatar class="circular">
+                    <img class="imgPerfil" src="assets/img/{{usuarioPerfil.fotoUsuario}}">
+                </div>
+                <mat-card-content>
+                    <mat-card-title>Nombre</mat-card-title>
+                    <mat-card-subtitle>{{ usuarioPerfil.nombre }}</mat-card-subtitle>
+                </mat-card-content>
+                <mat-card-content>
+                    <mat-card-title>Primer apellido</mat-card-title>
+                    <mat-card-subtitle>{{ usuarioPerfil.apellido1 }}</mat-card-subtitle>
+                </mat-card-content>
+                <mat-card-content>
+                    <mat-card-title>Segundo apellido</mat-card-title>
+                    <mat-card-subtitle>{{ usuarioPerfil.apellido2 }}</mat-card-subtitle>
+                </mat-card-content>
+                <mat-card-content>
+                    <mat-card-title>Correo electrónico</mat-card-title>
+                    <mat-card-subtitle>{{ usuarioPerfil.email }}</mat-card-subtitle>
+                </mat-card-content>
+                <mat-card-content>
+                    <mat-card-title>Fecha de nacimiento</mat-card-title>
+                    <mat-card-subtitle>{{ usuarioPerfil.fec_nac }}</mat-card-subtitle>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </ng-template>
 </div>

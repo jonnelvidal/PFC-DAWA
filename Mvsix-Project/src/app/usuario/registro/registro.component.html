@@ -1,3 +1,5 @@
+<ng-container *ngIf="exito; then mostrarMensaje">
+</ng-container>
 <div mat-dialog-container>
     <mat-horizontal-stepper linear="true" #stepper>
         <mat-step [stepControl]="datosUsuarioForm">
@@ -96,7 +98,12 @@
             </form>
         </mat-step>
     </mat-horizontal-stepper>
+
+
     <div mat-dialog-actions>
+        <ng-template #mostrarMensaje>
+            <mat-label>{{mensajeExitoso}}</mat-label>
+        </ng-template>
         <p>¿ Ya tienes una cuenta ?<button mat-raised-button (click)="iniciarSesion()">Iniciar Sesión</button> </p>
 
     </div>

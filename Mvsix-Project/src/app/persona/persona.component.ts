@@ -16,6 +16,7 @@ export class PersonaComponent implements OnInit {
   usuarios: Usuario[];
   usuarioSeleccionado: Usuario = {idUsuario: null, usuario: null, contrasena: null, email: null, nombre: null, apellido1:null, apellido2: null, fec_nac: null, pais: null, telefono: null, rol: null, fotoUsuario: null}
   booleano: Boolean = false;
+  usuarioPerfil: Usuario;
   constructor(private apiService: ApiService, private auth: AuthService, private dialogoLogin: LoginComponent) { 
 
   }
@@ -38,5 +39,9 @@ agregarAmigo(idUsuario){
   this.apiService.createAmigo(idUsuarios).subscribe(result => { 
     console.log(result)
   });
+}
+verPerfil(usuario: Usuario){
+  this.usuarioPerfil = usuario;
+  return this.usuarioPerfil;
 }
 }

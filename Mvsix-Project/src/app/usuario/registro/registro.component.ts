@@ -93,6 +93,8 @@ export class DialogRegistro implements OnInit {
   errorhttp: Boolean = false;
   expRegEmail: string = "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$";
   mensajeError: string;
+  mensajeExistoso: string;
+  exito: Boolean = false;
   constructor(
     public dialogRef: MatDialogRef<DialogRegistro>, private apiService: ApiService, public dialog: MatDialog, private _formBuilder: FormBuilder, private dialogoLogin: LoginComponent
   ) { }
@@ -137,25 +139,35 @@ export class DialogRegistro implements OnInit {
       this.usuarioRegistro.fec_nac = this.datosPersonalesForm.value.fec_nac;
       this.usuarioRegistro.pais = this.datosPersonalesForm.value.pais;
       this.usuarioRegistro.telefono = this.datosPersonalesForm.value.telefono;
-      if(this.datosPersonalesForm.value.fotoUsuario == null || this.datosPersonalesForm.value.fotoUsuario == '' || this.usuarioRegistro.fotoUsuario == null || this.usuarioRegistro.fotoUsuario == ''){
+      if (this.datosPersonalesForm.value.fotoUsuario == null || this.datosPersonalesForm.value.fotoUsuario == '' || this.usuarioRegistro.fotoUsuario == null || this.usuarioRegistro.fotoUsuario == '') {
         this.usuarioRegistro.fotoUsuario = "prof.png";
-      }else{
+      } else {
         this.usuarioRegistro.fotoUsuario = this.datosPersonalesForm.value.fotoUsuario;
       }
       return true;
     }
 
   }
+  async delay(ms: number) {
+    await new Promise(resolve => setTimeout(() => resolve(), ms)).then(() => console.log("fired"));
+  }
   registrarUsuario() {
     if (this.establecerDatos()) {
       this.apiService.createUsuario(this.usuarioRegistro).subscribe(result => {
         console.log(result);
-        this.dialogRef.close();
-        this.dialogoLogin.openDialog();
+        this.exito = true;
+        this.mensajeExistoso = "Se ha registrado exitosamente, en breves le redirigiremos al Login.";
+        console.log(this.exito);
+        console.log(this.mensajeExistoso);
+        this.delay(5000).then(any => {
+          this.dialogRef.close();
+          this.dialogoLogin.openDialog();
+        });
+
       }, error => {
         console.log(error.status);
         this.errorhttp = error.status;
-        if(error.status == 409){
+        if (error.status == 409) {
           this.mensajeError = "El usuario o el email introducido ya existe, por favor introduzca otro.\n Si ya está registrado, puede iniciar sesión.";
           this.errorhttp = true;
           return this.errorhttp;
@@ -165,4 +177,5 @@ export class DialogRegistro implements OnInit {
       return;
     }
   }
+
 }
