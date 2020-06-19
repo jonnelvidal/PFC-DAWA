@@ -26,7 +26,8 @@
                         <input matInput class="email" type="email" name="email" formControlName="email" placeholder="Ej.: mi_correo@mail.com" required>
                         <mat-error *ngIf="datosUsuario.email.invalid">
                             <mat-error *ngIf="datosUsuario.email.errors.required">Este campo es obligatorio</mat-error>
-                            <mat-error *ngIf="datosUsuario.email.errors.minlength || datosUsuario.email.errors.maxlength">El nombre de usuario debe estar entre 3 y 45 caracteres</mat-error>
+                            <mat-error *ngIf="datosUsuario.email.errors.pattern">El dato introducido no es un correo electrónico</mat-error>
+
                         </mat-error>
                     </mat-form-field>
                     <button mat-button matStepperNext>Siguiente</button>

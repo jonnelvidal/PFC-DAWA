@@ -28,7 +28,7 @@ export class PersonaComponent implements OnInit {
       this.dialogoLogin.openDialog();
     }
     
-    this.apiService.readUsuarios().subscribe((usuarios: Usuario[])=>{
+    this.apiService.readPersonas(this.auth.getUsuario()).subscribe((usuarios: Usuario[])=>{
       this.usuarios = usuarios;
     });
   }

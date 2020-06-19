@@ -91,6 +91,7 @@ export class DialogRegistro implements OnInit {
   datosUsuarioForm: FormGroup;
   datosPersonalesForm: FormGroup;
   errorhttp: Boolean = false;
+  expRegEmail: string = "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$";
   mensajeError: string;
   constructor(
     public dialogRef: MatDialogRef<DialogRegistro>, private apiService: ApiService, public dialog: MatDialog, private _formBuilder: FormBuilder, private dialogoLogin: LoginComponent
@@ -104,7 +105,7 @@ export class DialogRegistro implements OnInit {
     this.datosUsuarioForm = this._formBuilder.group({
       usuario: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(45)])],
       contrasena: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(45)])],
-      email: ['', Validators.required]
+      email: ['', Validators.compose([Validators.required, Validators.pattern(this.expRegEmail)])],
     });
     this.datosPersonalesForm = this._formBuilder.group({
       nombre: ['', Validators.required],

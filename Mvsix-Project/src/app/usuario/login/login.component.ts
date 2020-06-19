@@ -35,9 +35,6 @@ export class LoginComponent implements OnInit {
       height: 'auto',
 
     });
-    dialogRef.afterClosed().subscribe(result => {
-      location.reload();
-    });
   }
   
   establecerDatos() {
@@ -56,6 +53,7 @@ export class LoginComponent implements OnInit {
     this.apiService.loginUsuario(this.usuarioLogeado).subscribe((usuario: Usuario) => {
       this.usuarioLogeado = usuario;
       console.log(usuario);
+      location.reload();
     });
   }
   ngOnInit(): void {

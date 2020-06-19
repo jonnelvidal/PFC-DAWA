@@ -157,6 +157,14 @@ class UsuarioDao{
         $stmt->execute();
         return $stmt->get_result();
     }
+    function mostrarPersonas(Usuario $usuario){
+        //Muestra las personas que puede conocer un usuario. Es decir, los usuarios que no son ni él ni sus amigos
+        $query = "CALL mostrarPersonas(?)";
+        $stmt = $this->conexion->prepare($query);
+        $stmt->bind_param("i", $usuario->idUsuario);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
     function mostrarAmigos(Usuario $usuario){
         $query = "CALL listaAmigos(?)";
         $stmt = $this->conexion->prepare($query);
